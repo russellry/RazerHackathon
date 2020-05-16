@@ -31,6 +31,8 @@
 		FB49FC0E247008D1006082E5 /* EndowmentAccountModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB49FC0D247008D1006082E5 /* EndowmentAccountModel.swift */; };
 		FB49FC1024703F58006082E5 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB49FC0F24703F58006082E5 /* TabBarViewController.swift */; };
 		FB49FC122470693C006082E5 /* BasicAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB49FC112470693C006082E5 /* BasicAuth.swift */; };
+		FB49FC1424706BAC006082E5 /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB49FC1324706BAC006082E5 /* URL.swift */; };
+		FB49FC1624706CD2006082E5 /* Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB49FC1524706CD2006082E5 /* Defaults.swift */; };
 		FB60866F246E55AF00A68DC6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB60866E246E55AF00A68DC6 /* AppDelegate.swift */; };
 		FB608671246E55AF00A68DC6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB608670246E55AF00A68DC6 /* SceneDelegate.swift */; };
 		FB608678246E55AF00A68DC6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB608676246E55AF00A68DC6 /* Main.storyboard */; };
@@ -77,6 +79,8 @@
 		FB49FC0D247008D1006082E5 /* EndowmentAccountModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndowmentAccountModel.swift; sourceTree = "<group>"; };
 		FB49FC0F24703F58006082E5 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		FB49FC112470693C006082E5 /* BasicAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicAuth.swift; sourceTree = "<group>"; };
+		FB49FC1324706BAC006082E5 /* URL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URL.swift; sourceTree = "<group>"; };
+		FB49FC1524706CD2006082E5 /* Defaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Defaults.swift; sourceTree = "<group>"; };
 		FB60866B246E55AF00A68DC6 /* RazerHackathon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RazerHackathon.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB60866E246E55AF00A68DC6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FB608670246E55AF00A68DC6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -251,6 +255,8 @@
 				FB49FC04246FCFAF006082E5 /* AccountCollectionViewCell.xib */,
 				FB49FC09246FE990006082E5 /* MachineState.swift */,
 				FB49FC112470693C006082E5 /* BasicAuth.swift */,
+				FB49FC1324706BAC006082E5 /* URL.swift */,
+				FB49FC1524706CD2006082E5 /* Defaults.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -424,6 +430,7 @@
 				FB49FC02246FC388006082E5 /* TransactionTableViewCell.swift in Sources */,
 				FB49FC1024703F58006082E5 /* TabBarViewController.swift in Sources */,
 				FB49FBFC246FB4F2006082E5 /* DepositModel.swift in Sources */,
+				FB49FC1424706BAC006082E5 /* URL.swift in Sources */,
 				FB60869C246E6F3000A68DC6 /* UIImage.swift in Sources */,
 				FB49FBF0246F1526006082E5 /* UIView.swift in Sources */,
 				FB60869E246E78BD00A68DC6 /* NRICModel.swift in Sources */,
@@ -431,6 +438,7 @@
 				FB49FBFE246FB71C006082E5 /* ClientAccountModel.swift in Sources */,
 				FB608671246E55AF00A68DC6 /* SceneDelegate.swift in Sources */,
 				FB49FC0E247008D1006082E5 /* EndowmentAccountModel.swift in Sources */,
+				FB49FC1624706CD2006082E5 /* Defaults.swift in Sources */,
 				FB49FC08246FDE11006082E5 /* TransferModel.swift in Sources */,
 				FB49FC0C246FF850006082E5 /* Notification+Name.swift in Sources */,
 			);

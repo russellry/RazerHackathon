@@ -13,8 +13,9 @@ import SkeletonView
 class VerifySuccessViewController: UIViewController {
     
     var base64image: String?
-    let verifyNRICURL: String = "https://niw1itg937.execute-api.ap-southeast-1.amazonaws.com/Prod/verify"
-    let baseURL: String = "https://razerhackathon.sandbox.mambu.com/api/"
+    let verifyNRICURL: String = eKYCFwdURL
+    let baseURL: String = mambuBaseURL
+
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var typeLabel: UILabel!
     @IBOutlet weak var bdayLabel: UILabel!
@@ -22,18 +23,12 @@ class VerifySuccessViewController: UIViewController {
     @IBOutlet weak var nricLabel: UILabel!
     @IBOutlet weak var raceLabel: UILabel!
     @IBOutlet weak var contentView: UIView!
-    
     @IBOutlet weak var continueBtn: UIButton!
     @IBOutlet weak var retakeBtn: UIButton!
-    let defaults = UserDefaults.standard
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        showAnimatedSkeleton()
-        overrideUserInterfaceStyle = .light
-        continueBtn.layer.cornerRadius = 4
-        continueBtn.isEnabled = false
-        retakeBtn.layer.cornerRadius = 4
+        setupUI()
         startProcess()
     }
     
@@ -65,16 +60,13 @@ class VerifySuccessViewController: UIViewController {
                             return
                         }
                         
-                        self.defaults.set(branchID, forKey: "branchID")
-                        self.defaults.set(clientID, forKey: "clientID")
+                        setDefaultsValue(key: "branchID", value: branchID)
+                        setDefaultsValue(key: "clientID", value: clientID)
                         self.createCurrentAccount()
                     })
                 })
             } catch {
-                let alert = UIAlertController(title: "Your picture wasn't super clear", message: "Let's retake the photo, yeah?", preferredStyle: .alert)
-                
-                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-                self.present(alert, animated: true)
+                self.showErrorAlert()
             }
         })
     }
@@ -82,27 +74,25 @@ class VerifySuccessViewController: UIViewController {
     func createCurrentAccount(){
         let currentAccountURL = baseURL + "savings"
         let accountHolderType = "CLIENT"
-        guard let accountHolderKey = defaults.string(forKey: "clientID") else {
-            return
-        }
+        let accountHolderKey = getDefaultsValue(key: "clientID")
         let accountState = "APPROVED"
         let productTypeKey = "8a8e878471bf59cf0171bf6979700440"
         let allowOverdraft = "true"
         let accountType = "CURRENT_ACCOUNT"
         let interestRate = "1.25"
         
-        let currentAccountDetails = CurrentAccountModel(savingsAccount: SavingsAccount(accountHolderType: accountHolderType, accountHolderKey: accountHolderKey, accountState: accountState, productTypeKey: productTypeKey, allowOverdraft: allowOverdraft, accountType: accountType, interestSettings: InterestSettings(interestRate: interestRate)))
+        let currentAccountRequest = CurrentAccountModel(savingsAccount: SavingsAccount(accountHolderType: accountHolderType, accountHolderKey: accountHolderKey, accountState: accountState, productTypeKey: productTypeKey, allowOverdraft: allowOverdraft, accountType: accountType, interestSettings: InterestSettings(interestRate: interestRate)))
         
-        let data = try? JSONEncoder().encode(currentAccountDetails)
+        let data = try? JSONEncoder().encode(currentAccountRequest)
         
         do {
             let params = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as? [String: Any]
             
             let headers = mambuBasicAuth()
             
-            AF.request(currentAccountURL, method: .post, parameters: params, encoding: JSONEncoding.default,  headers: headers).responseJSON { rr in
-                return
-            }
+            AF.request(currentAccountURL, method: .post, parameters: params, encoding: JSONEncoding.default,  headers: headers).responseJSON(completionHandler: {
+                _ in
+            })
         } catch {
             print(error)
         }
@@ -110,14 +100,15 @@ class VerifySuccessViewController: UIViewController {
     
     func createClientID(branchID: String, credentials: NRICModel, onCompletion: @escaping ((_ response: String) -> Void)){
         let clientsURL = baseURL + "clients"
+        
         let nameArr = credentials.vision.extract.name.components(separatedBy: " ")
-        let client = ClientModel(client: Client(
-            firstName: nameArr.first ?? "",
-            lastName: nameArr.last ?? "",
-            assignedBranchKey: branchID),
-                                 idDocuments: [IDDocuments(identificationDocumentTemplateKey: "8a8e867271bd280c0171bf7e4ec71b01",
-                                                           documentType: "NRIC/Passport Number",
-                                                           documentId: credentials.vision.extract.idNum)])
+        let firstName = nameArr.first ?? ""
+        let lastName = nameArr.last ?? ""
+        let idTempKey = "8a8e867271bd280c0171bf7e4ec71b01"
+        let docType = "NRIC/Passport Number"
+        let docId = credentials.vision.extract.idNum
+
+        let client = ClientModel(client: Client(firstName:firstName, lastName: lastName, assignedBranchKey: branchID), idDocuments: [IDDocuments(identificationDocumentTemplateKey: idTempKey, documentType: docType, documentId: docId)])
         
         let data = try? JSONEncoder().encode(client)
         
@@ -154,14 +145,20 @@ class VerifySuccessViewController: UIViewController {
         }
     }
     
-    @IBAction func tapRetakeBtn(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
+    fileprivate func showErrorAlert() {
+        let alert = UIAlertController(title: "Your picture wasn't super clear", message: "Let's retake the photo, yeah?", preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        self.present(alert, animated: true)
     }
     
-    @IBAction func tapContinueBtn(_ sender: Any) {
-        performSegue(withIdentifier: "toHomeScreen", sender: nil)
+    fileprivate func setupUI() {
+        showAnimatedSkeleton()
+        overrideUserInterfaceStyle = .light
+        continueBtn.layer.cornerRadius = 4
+        continueBtn.isEnabled = false
+        retakeBtn.layer.cornerRadius = 4
     }
-    
     
     fileprivate func showAnimatedSkeleton() {
         nameLabel.showAnimatedSkeleton()
@@ -179,5 +176,13 @@ class VerifySuccessViewController: UIViewController {
         self.birthCountryLabel.hideSkeleton()
         self.nricLabel.hideSkeleton()
         self.raceLabel.hideSkeleton()
+    }
+    
+    @IBAction func tapRetakeBtn(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func tapContinueBtn(_ sender: Any) {
+        performSegue(withIdentifier: "toHomeScreen", sender: nil)
     }
 }
