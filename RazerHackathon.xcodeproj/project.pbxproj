@@ -32,8 +32,6 @@
 		FB49FC1024703F58006082E5 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB49FC0F24703F58006082E5 /* TabBarViewController.swift */; };
 		FB60866F246E55AF00A68DC6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB60866E246E55AF00A68DC6 /* AppDelegate.swift */; };
 		FB608671246E55AF00A68DC6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB608670246E55AF00A68DC6 /* SceneDelegate.swift */; };
-		FB608673246E55AF00A68DC6 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB608672246E55AF00A68DC6 /* FirstViewController.swift */; };
-		FB608675246E55AF00A68DC6 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB608674246E55AF00A68DC6 /* SecondViewController.swift */; };
 		FB608678246E55AF00A68DC6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB608676246E55AF00A68DC6 /* Main.storyboard */; };
 		FB60867A246E55B200A68DC6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FB608679246E55B200A68DC6 /* Assets.xcassets */; };
 		FB60867D246E55B200A68DC6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB60867B246E55B200A68DC6 /* LaunchScreen.storyboard */; };
@@ -80,8 +78,6 @@
 		FB60866B246E55AF00A68DC6 /* RazerHackathon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RazerHackathon.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB60866E246E55AF00A68DC6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FB608670246E55AF00A68DC6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		FB608672246E55AF00A68DC6 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
-		FB608674246E55AF00A68DC6 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		FB608677246E55AF00A68DC6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FB608679246E55B200A68DC6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FB60867C246E55B200A68DC6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -209,8 +205,6 @@
 				FB608684246E55D300A68DC6 /* Onboarding */,
 				FB60866E246E55AF00A68DC6 /* AppDelegate.swift */,
 				FB608670246E55AF00A68DC6 /* SceneDelegate.swift */,
-				FB608672246E55AF00A68DC6 /* FirstViewController.swift */,
-				FB608674246E55AF00A68DC6 /* SecondViewController.swift */,
 				FB608676246E55AF00A68DC6 /* Main.storyboard */,
 				FB608679246E55B200A68DC6 /* Assets.xcassets */,
 				FB60867B246E55B200A68DC6 /* LaunchScreen.storyboard */,
@@ -408,10 +402,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FB608675246E55AF00A68DC6 /* SecondViewController.swift in Sources */,
 				FB49FBE7246F002D006082E5 /* JourneyViewController.swift in Sources */,
 				FB60868F246E58CC00A68DC6 /* VerifySuccessViewController.swift in Sources */,
-				FB608673246E55AF00A68DC6 /* FirstViewController.swift in Sources */,
 				FB608698246E641A00A68DC6 /* TakePhotoViewController.swift in Sources */,
 				FB49FBF3246F1831006082E5 /* DiscoverDailyViewController.swift in Sources */,
 				FB6086A3246EB72800A68DC6 /* ClientModel.swift in Sources */,
