@@ -26,11 +26,11 @@
                                             <size key="itemSize" width="414" height="217.5"/>
                                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                            <inset key="sectionInset" minX="4" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                            <inset key="sectionInset" minX="20" minY="0.0" maxX="20" maxY="0.0"/>
                                         </collectionViewFlowLayout>
                                         <cells>
                                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="AccountCollectionViewCell" id="jJR-F2-ZMz" customClass="AccountCollectionViewCell" customModule="RazerHackathon" customModuleProvider="target">
-                                                <rect key="frame" x="4" y="0.0" width="414" height="217.5"/>
+                                                <rect key="frame" x="20" y="0.0" width="414" height="217.5"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Yzt-ZD-08g">
                                                     <rect key="frame" x="0.0" y="0.0" width="414" height="217.5"/>
@@ -95,7 +95,7 @@
                                 </connections>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Recent Transactions" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sh6-yc-EUJ">
-                                <rect key="frame" x="20" y="313.5" width="156" height="21"/>
+                                <rect key="frame" x="12" y="313.5" width="156" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -112,7 +112,7 @@
                             <constraint firstItem="f0f-dz-bEB" firstAttribute="leading" secondItem="sqK-IK-f2v" secondAttribute="leading" id="oDF-VX-MX8"/>
                             <constraint firstItem="rAG-aX-EBV" firstAttribute="leading" secondItem="sqK-IK-f2v" secondAttribute="leading" id="uRK-Ip-P80"/>
                             <constraint firstItem="rAG-aX-EBV" firstAttribute="top" secondItem="Sh6-yc-EUJ" secondAttribute="bottom" constant="8" id="uXL-pA-i1C"/>
-                            <constraint firstItem="Sh6-yc-EUJ" firstAttribute="leading" secondItem="sqK-IK-f2v" secondAttribute="leading" constant="20" id="uif-se-H31"/>
+                            <constraint firstItem="Sh6-yc-EUJ" firstAttribute="leading" secondItem="sqK-IK-f2v" secondAttribute="leading" constant="12" id="uif-se-H31"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="sqK-IK-f2v"/>
                     </view>
@@ -175,6 +175,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="selectedImageTintColor" red="0.59860128160000003" green="0.76610368490000003" blue="0.33323013779999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     </tabBar>
                     <connections>
                         <segue destination="g4U-a0-VCH" kind="relationship" relationship="viewControllers" id="muc-YB-Fxe"/>

@@ -13,7 +13,7 @@ class HomeViewController: UIViewController {
     let defaults = UserDefaults.standard
     var accounts = [ClientAccountModel]()
     var transactions = [TransactionModel]()
-    let clientID = "8a8e87947217506401721c02f7b0293d"
+    let clientID = "8a8e87947217506401721c02f7b0293d" //TODO: delete before upload code
     
     @IBOutlet weak var transactionTable: UITableView!
     @IBOutlet weak var accountsCollection: UICollectionView!
@@ -23,17 +23,17 @@ class HomeViewController: UIViewController {
         navigationItem.setHidesBackButton(true, animated: true)
         let nibCell = UINib(nibName: "AccountCollectionViewCell", bundle: nil)
         self.accountsCollection.register(nibCell, forCellWithReuseIdentifier: "AccountCollectionViewCell")
-
-        // Do any additional setup after loading the view.
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
         obtainClientAccounts { (clientaccounts) in
-            print(clientaccounts)
             self.accounts = clientaccounts
             self.accountsCollection.reloadData()
             self.depositIntoCurrentAccount()
             let currentAccountID = self.accounts[0].encodedKey
             self.getAllTransactions(currentAccountID: currentAccountID)
         }
-        
     }
     
     func getAllTransactions(currentAccountID: String) {
@@ -49,7 +49,6 @@ class HomeViewController: UIViewController {
                 let result = try JSONDecoder().decode([TransactionModel].self, from: response.data!)
                 self.transactions = result
                 self.transactionTable.reloadData()
-
             } catch {
                 NSLog("Failed to fetch transactions")
             }
@@ -78,7 +77,7 @@ class HomeViewController: UIViewController {
     
     func depositIntoCurrentAccount() {
         let currentAccountID = accounts[0].encodedKey
-        print(currentAccountID)
+
         let user = "Team11"
         let password = "pass8AE7D4715"
         let credentialData = "\(user):\(password)".data(using: String.Encoding.utf8)!
@@ -174,7 +173,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         
         cell.accountTypeLabel.text = account.accountType
         cell.accountNumberLabel.text = account.encodedKey
-        cell.balanceLabel.text = account.balance
+        cell.balanceLabel.text = "SGD \(account.balance).00"
         
         return cell
     }
