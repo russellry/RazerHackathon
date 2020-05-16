@@ -56,13 +56,10 @@ class HomeViewController: UIViewController {
     
     func getAllTransactions(currentAccountID: String) {
         let getAllTransactionURL = "https://razerhackathon.sandbox.mambu.com/api/savings/\(currentAccountID)/transactions"
-        let user = "Team11"
-        let password = "pass8AE7D4715"
-        let credentialData = "\(user):\(password)".data(using: String.Encoding.utf8)!
-        let base64Credentials = credentialData.base64EncodedString()
-        let headers = ["Authorization": "Basic \(base64Credentials)"]
+
+        let headers = mambuBasicAuth()
         
-        AF.request(getAllTransactionURL, method: .get, headers: HTTPHeaders(headers)).responseJSON { response in
+        AF.request(getAllTransactionURL, method: .get, headers: headers).responseJSON { response in
             do {
                 let result = try JSONDecoder().decode([TransactionModel].self, from: response.data!)
                 self.transactions = result
@@ -76,13 +73,10 @@ class HomeViewController: UIViewController {
     func obtainClientAccounts(onCompletion: @escaping ((_: [ClientAccountModel]) -> Void)) {
         let clientID = defaults.string(forKey: "clientID") // fetched during onboarding flow
         let obtainClientAccountURL = "https://razerhackathon.sandbox.mambu.com/api/clients/\(clientID!)/savings"
-        let user = "Team11"
-        let password = "pass8AE7D4715"
-        let credentialData = "\(user):\(password)".data(using: String.Encoding.utf8)!
-        let base64Credentials = credentialData.base64EncodedString()
-        let headers = ["Authorization": "Basic \(base64Credentials)"]
         
-        AF.request(obtainClientAccountURL, method: .get, headers: HTTPHeaders(headers)).responseJSON { response in
+        let headers = mambuBasicAuth()
+        
+        AF.request(obtainClientAccountURL, method: .get, headers: headers).responseJSON { response in
             do {
                 let result = try JSONDecoder().decode([ClientAccountModel].self, from: response.data!)
                 onCompletion(result)
@@ -96,11 +90,8 @@ class HomeViewController: UIViewController {
     func depositIntoCurrentAccount() {
         let currentAccountID = accounts[0].encodedKey
         
-        let user = "Team11"
-        let password = "pass8AE7D4715"
-        let credentialData = "\(user):\(password)".data(using: String.Encoding.utf8)!
-        let base64Credentials = credentialData.base64EncodedString()
-        let headers = ["Authorization": "Basic \(base64Credentials)"]
+        let headers = mambuBasicAuth()
+
         let type = "DEPOSIT"
         let amount = [20, 50, 20, 100, 500]
         let value = "123456"
@@ -113,7 +104,7 @@ class HomeViewController: UIViewController {
                 let deposit = DepositModel(amount: Double(amount[i]), notes: notesArr[i], type: type, method: method, customInformation: [CustomInformation(value: value, customFieldID: customID)])
                 let data = try? JSONEncoder().encode(deposit)
                 let params = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as? [String: Any]
-                AF.request(depositURL, method: .post, parameters: params, encoding: JSONEncoding.default,  headers: HTTPHeaders(headers)).responseJSON(completionHandler: { _ in
+                AF.request(depositURL, method: .post, parameters: params, encoding: JSONEncoding.default,  headers: headers).responseJSON(completionHandler: { _ in
                     self.getAllTransactions(currentAccountID: currentAccountID)
                 })
             }
@@ -125,11 +116,9 @@ class HomeViewController: UIViewController {
     func transferOutFromCurrentAccount(fromAccount: String, toAccount: String) {
         let currentAccountID = fromAccount
         let savingsAccountID = toAccount
-        let user = "Team11"
-        let password = "pass8AE7D4715"
-        let credentialData = "\(user):\(password)".data(using: String.Encoding.utf8)!
-        let base64Credentials = credentialData.base64EncodedString()
-        let headers = ["Authorization": "Basic \(base64Credentials)"]
+        
+        let headers = mambuBasicAuth()
+
         let type = "TRANSFER"
         let notes = "Save Together with Razer Pay"
         let amount = "20"
@@ -140,7 +129,7 @@ class HomeViewController: UIViewController {
             let transfer = TransferModel(type: type, amount: amount, notes: notes, toSavingsAccount: savingsAccountID, method: method)
             let data = try? JSONEncoder().encode(transfer)
             let params = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as? [String: Any]
-            AF.request(depositURL, method: .post, parameters: params, encoding: JSONEncoding.default,  headers: HTTPHeaders(headers)).responseJSON(completionHandler: { _ in
+            AF.request(depositURL, method: .post, parameters: params, encoding: JSONEncoding.default,  headers: headers).responseJSON(completionHandler: { _ in
                 self.obtainClientAccounts(onCompletion: { clientacc in
                     self.accounts = clientacc
                     self.getAllTransactions(currentAccountID: self.accounts[0].encodedKey)

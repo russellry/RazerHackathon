@@ -72,7 +72,7 @@ class VerifySuccessViewController: UIViewController {
                 })
             } catch {
                 let alert = UIAlertController(title: "Your picture wasn't super clear", message: "Let's retake the photo, yeah?", preferredStyle: .alert)
-
+                
                 alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                 self.present(alert, animated: true)
             }
@@ -97,14 +97,10 @@ class VerifySuccessViewController: UIViewController {
         
         do {
             let params = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as? [String: Any]
-            let user = "Team11"
-            let password = "pass8AE7D4715"
-            let credentialData = "\(user):\(password)".data(using: String.Encoding.utf8)!
-            let base64Credentials = credentialData.base64EncodedString()
             
-            let headers = ["Authorization": "Basic \(base64Credentials)"]
+            let headers = mambuBasicAuth()
             
-            AF.request(currentAccountURL, method: .post, parameters: params, encoding: JSONEncoding.default,  headers: HTTPHeaders(headers)).responseJSON { rr in
+            AF.request(currentAccountURL, method: .post, parameters: params, encoding: JSONEncoding.default,  headers: headers).responseJSON { rr in
                 return
             }
         } catch {
@@ -115,23 +111,22 @@ class VerifySuccessViewController: UIViewController {
     func createClientID(branchID: String, credentials: NRICModel, onCompletion: @escaping ((_ response: String) -> Void)){
         let clientsURL = baseURL + "clients"
         let nameArr = credentials.vision.extract.name.components(separatedBy: " ")
-        let client = ClientModel(client:
-            Client(firstName: nameArr.first ?? "", lastName: nameArr.last ?? "", assignedBranchKey: branchID),
-                                 idDocuments:
-            [IDDocuments(identificationDocumentTemplateKey: "8a8e867271bd280c0171bf7e4ec71b01", documentType: "NRIC/Passport Number", documentId: credentials.vision.extract.idNum)])
+        let client = ClientModel(client: Client(
+            firstName: nameArr.first ?? "",
+            lastName: nameArr.last ?? "",
+            assignedBranchKey: branchID),
+                                 idDocuments: [IDDocuments(identificationDocumentTemplateKey: "8a8e867271bd280c0171bf7e4ec71b01",
+                                                           documentType: "NRIC/Passport Number",
+                                                           documentId: credentials.vision.extract.idNum)])
         
         let data = try? JSONEncoder().encode(client)
         
         do {
             let params = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as? [String: Any]
-            let user = "Team11"
-            let password = "pass8AE7D4715"
-            let credentialData = "\(user):\(password)".data(using: String.Encoding.utf8)!
-            let base64Credentials = credentialData.base64EncodedString()
+            let headers = mambuBasicAuth()
             
-            let headers = ["Authorization": "Basic \(base64Credentials)"]
             
-            AF.request(clientsURL, method: .post, parameters: params, encoding: JSONEncoding.default,  headers: HTTPHeaders(headers)).responseJSON { response in
+            AF.request(clientsURL, method: .post, parameters: params, encoding: JSONEncoding.default,  headers: headers).responseJSON { response in
                 
                 let result = try? JSONDecoder().decode(ClientModelResponse.self, from: response.data!)
                 onCompletion((result?.client.encodedKey)!)
@@ -144,13 +139,9 @@ class VerifySuccessViewController: UIViewController {
     func getBranchID(onCompletion: @escaping ((_ response: String) -> Void)) {
         let branchURL = baseURL + "branches/team11"
         var branchId = ""
-        let user = "Team11"
-        let password = "pass8AE7D4715"
-        let credentialData = "\(user):\(password)".data(using: String.Encoding.utf8)!
-        let base64Credentials = credentialData.base64EncodedString()
-        let headers = ["Authorization": "Basic \(base64Credentials)"]
+        let headers = mambuBasicAuth()
         
-        AF.request(branchURL, method: .get, headers: HTTPHeaders(headers)).responseJSON { response in
+        AF.request(branchURL, method: .get, headers: headers).responseJSON { response in
             do {
                 let result = try JSONDecoder().decode(BranchModel.self, from: response.data!)
                 branchId = result.encodedKey

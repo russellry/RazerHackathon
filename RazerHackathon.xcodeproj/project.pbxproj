@@ -30,6 +30,7 @@
 		FB49FC0C246FF850006082E5 /* Notification+Name.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB49FC0B246FF850006082E5 /* Notification+Name.swift */; };
 		FB49FC0E247008D1006082E5 /* EndowmentAccountModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB49FC0D247008D1006082E5 /* EndowmentAccountModel.swift */; };
 		FB49FC1024703F58006082E5 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB49FC0F24703F58006082E5 /* TabBarViewController.swift */; };
+		FB49FC122470693C006082E5 /* BasicAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB49FC112470693C006082E5 /* BasicAuth.swift */; };
 		FB60866F246E55AF00A68DC6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB60866E246E55AF00A68DC6 /* AppDelegate.swift */; };
 		FB608671246E55AF00A68DC6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB608670246E55AF00A68DC6 /* SceneDelegate.swift */; };
 		FB608678246E55AF00A68DC6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB608676246E55AF00A68DC6 /* Main.storyboard */; };
@@ -75,6 +76,7 @@
 		FB49FC0B246FF850006082E5 /* Notification+Name.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification+Name.swift"; sourceTree = "<group>"; };
 		FB49FC0D247008D1006082E5 /* EndowmentAccountModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndowmentAccountModel.swift; sourceTree = "<group>"; };
 		FB49FC0F24703F58006082E5 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
+		FB49FC112470693C006082E5 /* BasicAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicAuth.swift; sourceTree = "<group>"; };
 		FB60866B246E55AF00A68DC6 /* RazerHackathon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RazerHackathon.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB60866E246E55AF00A68DC6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FB608670246E55AF00A68DC6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -248,6 +250,7 @@
 				FB49FC03246FCFAF006082E5 /* AccountCollectionViewCell.swift */,
 				FB49FC04246FCFAF006082E5 /* AccountCollectionViewCell.xib */,
 				FB49FC09246FE990006082E5 /* MachineState.swift */,
+				FB49FC112470693C006082E5 /* BasicAuth.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -409,6 +412,7 @@
 				FB6086A3246EB72800A68DC6 /* ClientModel.swift in Sources */,
 				FB49FBE0246EF70E006082E5 /* HomeViewController.swift in Sources */,
 				FB49FBEC246F0058006082E5 /* AccountViewController.swift in Sources */,
+				FB49FC122470693C006082E5 /* BasicAuth.swift in Sources */,
 				FB6086A1246E9C4500A68DC6 /* BranchModel.swift in Sources */,
 				FB49FC0A246FE990006082E5 /* MachineState.swift in Sources */,
 				FB6086A5246EDE9C00A68DC6 /* CurrentAccountModel.swift in Sources */,

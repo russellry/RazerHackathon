@@ -92,17 +92,13 @@ class JourneyViewController: UIViewController {
         let accountType = "FIXED_DEPOSIT"
         let interestRate = "2"
         
-        let user = "Team11"
-        let password = "pass8AE7D4715"
-        let credentialData = "\(user):\(password)".data(using: String.Encoding.utf8)!
-        let base64Credentials = credentialData.base64EncodedString()
-        let headers = ["Authorization": "Basic \(base64Credentials)"]
+        let headers = mambuBasicAuth()
         
         do {
             let deposit = EndowmentAccountModel(savingsAccount: SavingsAccount(accountHolderType: accountHolderType, accountHolderKey: clientID!, accountState: accountState, productTypeKey: productTypeKey, allowOverdraft: allowOverdraft, accountType: accountType, interestSettings: InterestSettings(interestRate: interestRate)))
             let data = try? JSONEncoder().encode(deposit)
             let params = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as? [String: Any]
-            AF.request(createFixedDepAccountURL, method: .post, parameters: params, encoding: JSONEncoding.default,  headers: HTTPHeaders(headers)).responseJSON(completionHandler: { _ in
+            AF.request(createFixedDepAccountURL, method: .post, parameters: params, encoding: JSONEncoding.default,  headers: headers).responseJSON(completionHandler: { _ in
                 isSavingsAccountCreated = true
                 self.tabBarController?.selectedIndex = 0
             })
