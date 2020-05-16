@@ -3,10 +3,22 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		91902CEBF8198690C68275D4 /* Pods_RazerHackathon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F5511EF3A218AC3B74EDF19 /* Pods_RazerHackathon.framework */; };
+		FB49FBE0246EF70E006082E5 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB49FBDF246EF70E006082E5 /* HomeViewController.swift */; };
+		FB49FBE2246EF717006082E5 /* HomeScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB49FBE1246EF717006082E5 /* HomeScreen.storyboard */; };
+		FB49FBE7246F002D006082E5 /* JourneyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB49FBE6246F002D006082E5 /* JourneyViewController.swift */; };
+		FB49FBE9246F0036006082E5 /* JourneyScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB49FBE8246F0036006082E5 /* JourneyScreen.storyboard */; };
+		FB49FBEC246F0058006082E5 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB49FBEB246F0058006082E5 /* AccountViewController.swift */; };
+		FB49FBEE246F0061006082E5 /* AccountScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB49FBED246F0061006082E5 /* AccountScreen.storyboard */; };
+		FB49FBF0246F1526006082E5 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB49FBEF246F1526006082E5 /* UIView.swift */; };
+		FB49FBF3246F1831006082E5 /* DiscoverDailyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB49FBF2246F1831006082E5 /* DiscoverDailyViewController.swift */; };
+		FB49FBF5246F183B006082E5 /* DiscoverDailyScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB49FBF4246F183B006082E5 /* DiscoverDailyScreen.storyboard */; };
+		FB49FBF8246F38B9006082E5 /* GamesScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB49FBF7246F38B9006082E5 /* GamesScreen.storyboard */; };
+		FB49FBFA246F38C1006082E5 /* GamesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB49FBF9246F38C1006082E5 /* GamesViewController.swift */; };
 		FB60866F246E55AF00A68DC6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB60866E246E55AF00A68DC6 /* AppDelegate.swift */; };
 		FB608671246E55AF00A68DC6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB608670246E55AF00A68DC6 /* SceneDelegate.swift */; };
 		FB608673246E55AF00A68DC6 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB608672246E55AF00A68DC6 /* FirstViewController.swift */; };
@@ -14,9 +26,35 @@
 		FB608678246E55AF00A68DC6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB608676246E55AF00A68DC6 /* Main.storyboard */; };
 		FB60867A246E55B200A68DC6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FB608679246E55B200A68DC6 /* Assets.xcassets */; };
 		FB60867D246E55B200A68DC6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB60867B246E55B200A68DC6 /* LaunchScreen.storyboard */; };
+		FB608686246E55EB00A68DC6 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB608685246E55EB00A68DC6 /* OnboardingViewController.swift */; };
+		FB608688246E55F500A68DC6 /* OnboardingScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB608687246E55F500A68DC6 /* OnboardingScreen.storyboard */; };
+		FB60868F246E58CC00A68DC6 /* VerifySuccessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB60868D246E58A500A68DC6 /* VerifySuccessViewController.swift */; };
+		FB608690246E58CC00A68DC6 /* VerifySuccessScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB60868E246E58A500A68DC6 /* VerifySuccessScreen.storyboard */; };
+		FB608695246E630700A68DC6 /* CameraController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB608694246E630700A68DC6 /* CameraController.swift */; };
+		FB608698246E641A00A68DC6 /* TakePhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB608696246E641A00A68DC6 /* TakePhotoViewController.swift */; };
+		FB608699246E661E00A68DC6 /* TakePhotoScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB608697246E641A00A68DC6 /* TakePhotoScreen.storyboard */; };
+		FB60869C246E6F3000A68DC6 /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB60869B246E6F3000A68DC6 /* UIImage.swift */; };
+		FB60869E246E78BD00A68DC6 /* NRICModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB60869D246E78BD00A68DC6 /* NRICModel.swift */; };
+		FB6086A1246E9C4500A68DC6 /* BranchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB6086A0246E9C4500A68DC6 /* BranchModel.swift */; };
+		FB6086A3246EB72800A68DC6 /* ClientModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB6086A2246EB72800A68DC6 /* ClientModel.swift */; };
+		FB6086A5246EDE9C00A68DC6 /* CurrentAccountModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB6086A4246EDE9C00A68DC6 /* CurrentAccountModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2F5511EF3A218AC3B74EDF19 /* Pods_RazerHackathon.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RazerHackathon.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		345CF08C6379FF6D82A7DAAD /* Pods-RazerHackathon.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RazerHackathon.release.xcconfig"; path = "Target Support Files/Pods-RazerHackathon/Pods-RazerHackathon.release.xcconfig"; sourceTree = "<group>"; };
+		6A681A5DF345EE20DC42DF15 /* Pods-RazerHackathon.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RazerHackathon.debug.xcconfig"; path = "Target Support Files/Pods-RazerHackathon/Pods-RazerHackathon.debug.xcconfig"; sourceTree = "<group>"; };
+		FB49FBDF246EF70E006082E5 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		FB49FBE1246EF717006082E5 /* HomeScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HomeScreen.storyboard; sourceTree = "<group>"; };
+		FB49FBE6246F002D006082E5 /* JourneyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JourneyViewController.swift; sourceTree = "<group>"; };
+		FB49FBE8246F0036006082E5 /* JourneyScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = JourneyScreen.storyboard; sourceTree = "<group>"; };
+		FB49FBEB246F0058006082E5 /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
+		FB49FBED246F0061006082E5 /* AccountScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AccountScreen.storyboard; sourceTree = "<group>"; };
+		FB49FBEF246F1526006082E5 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
+		FB49FBF2246F1831006082E5 /* DiscoverDailyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverDailyViewController.swift; sourceTree = "<group>"; };
+		FB49FBF4246F183B006082E5 /* DiscoverDailyScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DiscoverDailyScreen.storyboard; sourceTree = "<group>"; };
+		FB49FBF7246F38B9006082E5 /* GamesScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GamesScreen.storyboard; sourceTree = "<group>"; };
+		FB49FBF9246F38C1006082E5 /* GamesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamesViewController.swift; sourceTree = "<group>"; };
 		FB60866B246E55AF00A68DC6 /* RazerHackathon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RazerHackathon.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB60866E246E55AF00A68DC6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FB608670246E55AF00A68DC6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -26,6 +64,18 @@
 		FB608679246E55B200A68DC6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FB60867C246E55B200A68DC6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FB60867E246E55B200A68DC6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FB608685246E55EB00A68DC6 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
+		FB608687246E55F500A68DC6 /* OnboardingScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = OnboardingScreen.storyboard; sourceTree = "<group>"; };
+		FB60868D246E58A500A68DC6 /* VerifySuccessViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifySuccessViewController.swift; sourceTree = "<group>"; };
+		FB60868E246E58A500A68DC6 /* VerifySuccessScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = VerifySuccessScreen.storyboard; sourceTree = "<group>"; };
+		FB608694246E630700A68DC6 /* CameraController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraController.swift; sourceTree = "<group>"; };
+		FB608696246E641A00A68DC6 /* TakePhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TakePhotoViewController.swift; sourceTree = "<group>"; };
+		FB608697246E641A00A68DC6 /* TakePhotoScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TakePhotoScreen.storyboard; sourceTree = "<group>"; };
+		FB60869B246E6F3000A68DC6 /* UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
+		FB60869D246E78BD00A68DC6 /* NRICModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NRICModel.swift; sourceTree = "<group>"; };
+		FB6086A0246E9C4500A68DC6 /* BranchModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BranchModel.swift; sourceTree = "<group>"; };
+		FB6086A2246EB72800A68DC6 /* ClientModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientModel.swift; sourceTree = "<group>"; };
+		FB6086A4246EDE9C00A68DC6 /* CurrentAccountModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentAccountModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,17 +83,82 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				91902CEBF8198690C68275D4 /* Pods_RazerHackathon.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		369067757628EC13D63EC724 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2F5511EF3A218AC3B74EDF19 /* Pods_RazerHackathon.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		AB92F32EF44903AD53341814 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				6A681A5DF345EE20DC42DF15 /* Pods-RazerHackathon.debug.xcconfig */,
+				345CF08C6379FF6D82A7DAAD /* Pods-RazerHackathon.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		FB49FBDE246EF6FF006082E5 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				FB49FBDF246EF70E006082E5 /* HomeViewController.swift */,
+				FB49FBE1246EF717006082E5 /* HomeScreen.storyboard */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		FB49FBE5246F0007006082E5 /* Journey */ = {
+			isa = PBXGroup;
+			children = (
+				FB49FBE6246F002D006082E5 /* JourneyViewController.swift */,
+				FB49FBE8246F0036006082E5 /* JourneyScreen.storyboard */,
+			);
+			path = Journey;
+			sourceTree = "<group>";
+		};
+		FB49FBEA246F0047006082E5 /* Account */ = {
+			isa = PBXGroup;
+			children = (
+				FB49FBEB246F0058006082E5 /* AccountViewController.swift */,
+				FB49FBED246F0061006082E5 /* AccountScreen.storyboard */,
+			);
+			path = Account;
+			sourceTree = "<group>";
+		};
+		FB49FBF1246F1819006082E5 /* DiscoverDaily */ = {
+			isa = PBXGroup;
+			children = (
+				FB49FBF2246F1831006082E5 /* DiscoverDailyViewController.swift */,
+				FB49FBF4246F183B006082E5 /* DiscoverDailyScreen.storyboard */,
+			);
+			path = DiscoverDaily;
+			sourceTree = "<group>";
+		};
+		FB49FBF6246F38B0006082E5 /* Games */ = {
+			isa = PBXGroup;
+			children = (
+				FB49FBF7246F38B9006082E5 /* GamesScreen.storyboard */,
+				FB49FBF9246F38C1006082E5 /* GamesViewController.swift */,
+			);
+			path = Games;
+			sourceTree = "<group>";
+		};
 		FB608662246E55AF00A68DC6 = {
 			isa = PBXGroup;
 			children = (
 				FB60866D246E55AF00A68DC6 /* RazerHackathon */,
 				FB60866C246E55AF00A68DC6 /* Products */,
+				AB92F32EF44903AD53341814 /* Pods */,
+				369067757628EC13D63EC724 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -58,6 +173,17 @@
 		FB60866D246E55AF00A68DC6 /* RazerHackathon */ = {
 			isa = PBXGroup;
 			children = (
+				FB49FBF6246F38B0006082E5 /* Games */,
+				FB49FBF1246F1819006082E5 /* DiscoverDaily */,
+				FB49FBEA246F0047006082E5 /* Account */,
+				FB49FBE5246F0007006082E5 /* Journey */,
+				FB49FBDE246EF6FF006082E5 /* Home */,
+				FB60869F246E9C2D00A68DC6 /* Models */,
+				FB60869A246E6F2600A68DC6 /* Extensions */,
+				FB608693246E62F400A68DC6 /* Common */,
+				FB60868C246E582600A68DC6 /* VerifySuccess */,
+				FB608689246E560700A68DC6 /* TakePhoto */,
+				FB608684246E55D300A68DC6 /* Onboarding */,
 				FB60866E246E55AF00A68DC6 /* AppDelegate.swift */,
 				FB608670246E55AF00A68DC6 /* SceneDelegate.swift */,
 				FB608672246E55AF00A68DC6 /* FirstViewController.swift */,
@@ -70,6 +196,61 @@
 			path = RazerHackathon;
 			sourceTree = "<group>";
 		};
+		FB608684246E55D300A68DC6 /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				FB608685246E55EB00A68DC6 /* OnboardingViewController.swift */,
+				FB608687246E55F500A68DC6 /* OnboardingScreen.storyboard */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		FB608689246E560700A68DC6 /* TakePhoto */ = {
+			isa = PBXGroup;
+			children = (
+				FB608697246E641A00A68DC6 /* TakePhotoScreen.storyboard */,
+				FB608696246E641A00A68DC6 /* TakePhotoViewController.swift */,
+			);
+			path = TakePhoto;
+			sourceTree = "<group>";
+		};
+		FB60868C246E582600A68DC6 /* VerifySuccess */ = {
+			isa = PBXGroup;
+			children = (
+				FB60868D246E58A500A68DC6 /* VerifySuccessViewController.swift */,
+				FB60868E246E58A500A68DC6 /* VerifySuccessScreen.storyboard */,
+			);
+			path = VerifySuccess;
+			sourceTree = "<group>";
+		};
+		FB608693246E62F400A68DC6 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				FB608694246E630700A68DC6 /* CameraController.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		FB60869A246E6F2600A68DC6 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				FB60869B246E6F3000A68DC6 /* UIImage.swift */,
+				FB49FBEF246F1526006082E5 /* UIView.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		FB60869F246E9C2D00A68DC6 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				FB60869D246E78BD00A68DC6 /* NRICModel.swift */,
+				FB6086A0246E9C4500A68DC6 /* BranchModel.swift */,
+				FB6086A2246EB72800A68DC6 /* ClientModel.swift */,
+				FB6086A4246EDE9C00A68DC6 /* CurrentAccountModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -77,9 +258,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FB608681246E55B200A68DC6 /* Build configuration list for PBXNativeTarget "RazerHackathon" */;
 			buildPhases = (
+				CEE2D2FAE6E8FAB26DAFDCC1 /* [CP] Check Pods Manifest.lock */,
 				FB608667246E55AF00A68DC6 /* Sources */,
 				FB608668246E55AF00A68DC6 /* Frameworks */,
 				FB608669246E55AF00A68DC6 /* Resources */,
+				5CD6963556D9E5C2CC27E9CA /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -129,12 +312,62 @@
 			buildActionMask = 2147483647;
 			files = (
 				FB60867D246E55B200A68DC6 /* LaunchScreen.storyboard in Resources */,
+				FB608688246E55F500A68DC6 /* OnboardingScreen.storyboard in Resources */,
+				FB608690246E58CC00A68DC6 /* VerifySuccessScreen.storyboard in Resources */,
+				FB49FBF8246F38B9006082E5 /* GamesScreen.storyboard in Resources */,
+				FB49FBE9246F0036006082E5 /* JourneyScreen.storyboard in Resources */,
+				FB49FBE2246EF717006082E5 /* HomeScreen.storyboard in Resources */,
+				FB49FBF5246F183B006082E5 /* DiscoverDailyScreen.storyboard in Resources */,
 				FB60867A246E55B200A68DC6 /* Assets.xcassets in Resources */,
+				FB608699246E661E00A68DC6 /* TakePhotoScreen.storyboard in Resources */,
+				FB49FBEE246F0061006082E5 /* AccountScreen.storyboard in Resources */,
 				FB608678246E55AF00A68DC6 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		5CD6963556D9E5C2CC27E9CA /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-RazerHackathon/Pods-RazerHackathon-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-RazerHackathon/Pods-RazerHackathon-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-RazerHackathon/Pods-RazerHackathon-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CEE2D2FAE6E8FAB26DAFDCC1 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-RazerHackathon-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		FB608667246E55AF00A68DC6 /* Sources */ = {
@@ -142,8 +375,23 @@
 			buildActionMask = 2147483647;
 			files = (
 				FB608675246E55AF00A68DC6 /* SecondViewController.swift in Sources */,
+				FB49FBE7246F002D006082E5 /* JourneyViewController.swift in Sources */,
+				FB60868F246E58CC00A68DC6 /* VerifySuccessViewController.swift in Sources */,
 				FB608673246E55AF00A68DC6 /* FirstViewController.swift in Sources */,
+				FB608698246E641A00A68DC6 /* TakePhotoViewController.swift in Sources */,
+				FB49FBF3246F1831006082E5 /* DiscoverDailyViewController.swift in Sources */,
+				FB6086A3246EB72800A68DC6 /* ClientModel.swift in Sources */,
+				FB49FBE0246EF70E006082E5 /* HomeViewController.swift in Sources */,
+				FB49FBEC246F0058006082E5 /* AccountViewController.swift in Sources */,
+				FB6086A1246E9C4500A68DC6 /* BranchModel.swift in Sources */,
+				FB6086A5246EDE9C00A68DC6 /* CurrentAccountModel.swift in Sources */,
+				FB49FBFA246F38C1006082E5 /* GamesViewController.swift in Sources */,
+				FB608686246E55EB00A68DC6 /* OnboardingViewController.swift in Sources */,
 				FB60866F246E55AF00A68DC6 /* AppDelegate.swift in Sources */,
+				FB60869C246E6F3000A68DC6 /* UIImage.swift in Sources */,
+				FB49FBF0246F1526006082E5 /* UIView.swift in Sources */,
+				FB60869E246E78BD00A68DC6 /* NRICModel.swift in Sources */,
+				FB608695246E630700A68DC6 /* CameraController.swift in Sources */,
 				FB608671246E55AF00A68DC6 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -220,7 +468,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -274,7 +522,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -286,11 +534,13 @@
 		};
 		FB608682246E55B200A68DC6 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6A681A5DF345EE20DC42DF15 /* Pods-RazerHackathon.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = M6373TXG4B;
 				INFOPLIST_FILE = RazerHackathon/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -304,11 +554,13 @@
 		};
 		FB608683246E55B200A68DC6 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 345CF08C6379FF6D82A7DAAD /* Pods-RazerHackathon.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = M6373TXG4B;
 				INFOPLIST_FILE = RazerHackathon/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

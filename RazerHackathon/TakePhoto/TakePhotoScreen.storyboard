@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Take Photo View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="TakePhotoViewController" customModule="RazerHackathon" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lnd-7g-U5f">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Akr-g7-ggC">
+                                <rect key="frame" x="160" y="596" width="55" height="55"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="55" id="XnR-IN-00r"/>
+                                    <constraint firstAttribute="width" constant="55" id="vO7-4P-FPO"/>
+                                </constraints>
+                                <state key="normal" image="circle.fill" catalog="system"/>
+                                <connections>
+                                    <action selector="captureImage:" destination="BYZ-38-t0r" eventType="touchUpInside" id="rA5-mh-pt1"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="Lnd-7g-U5f" secondAttribute="trailing" id="6H3-Xq-DxO"/>
+                            <constraint firstItem="Akr-g7-ggC" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="9Xt-sS-1gp"/>
+                            <constraint firstItem="Lnd-7g-U5f" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="q6o-3X-9Jx"/>
+                            <constraint firstItem="Lnd-7g-U5f" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="r9n-tD-Vzp"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Lnd-7g-U5f" secondAttribute="bottom" id="wu8-Q1-oNQ"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Akr-g7-ggC" secondAttribute="bottom" constant="16" id="xj7-1S-cvn"/>
+                        </constraints>
+                    </view>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <connections>
+                        <outlet property="captureButton" destination="Akr-g7-ggC" id="xSL-CA-Vrb"/>
+                        <outlet property="capturePreviewView" destination="Lnd-7g-U5f" id="trV-8v-aG6"/>
+                        <segue destination="pSc-zv-uGd" kind="presentation" identifier="toVerifySuccessScreen" modalPresentationStyle="fullScreen" modalTransitionStyle="coverVertical" id="tpz-dN-utY"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="135" y="143"/>
+        </scene>
+        <!--VerifySuccessScreen-->
+        <scene sceneID="mFZ-AU-Y3n">
+            <objects>
+                <viewControllerPlaceholder storyboardName="VerifySuccessScreen" id="pSc-zv-uGd" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qDs-GY-w7q" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="746" y="142"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="circle.fill" catalog="system" width="128" height="121"/>
+    </resources>
+</document>
