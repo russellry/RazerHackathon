@@ -31,11 +31,11 @@ class JourneyViewController: UIViewController {
     @IBOutlet weak var discoverDailyLabel: UILabel!
     @IBOutlet weak var discoverContentLabel: UILabel!
     let defaults = UserDefaults.standard
-
+    
     let popupTitle = "HEY THERE!"
     let popupMessage = "Here's a reward on us." + "\n" + "2 FREE GAME CHANCES"
     let popupImage = UIImage(named: "sneki-graduated")
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         NotificationCenter.default.addObserver(self, selector: #selector(fillProgress), name: .progressFilled, object: nil)
@@ -55,7 +55,6 @@ class JourneyViewController: UIViewController {
         if progressFilled {
             self.backgroundView.image = UIImage(named: "bg-2")
             self.snekiSnek.setImage(UIImage(named: "mascot-work"), for: .normal)
-            self.progressBarBtn.alpha = 0
             transition()
         }
         
@@ -67,33 +66,18 @@ class JourneyViewController: UIViewController {
         discoverContentLabel.text = "We’re so proud of you. Let us get you ready for new goals! "
     }
     
-    func animateBanner(){
-        view.layoutIfNeeded()
-        UIView.animate(withDuration: 1, delay: 1, options: .curveEaseIn, animations: {
-            self.upgradedBanner.alpha = 1
-            self.upgradedBannerTopConstraint.constant -= 32
-            self.view.layoutIfNeeded()
-
-            })
-        
-        UIView.animate(withDuration: 1, delay: 0, options: .curveEaseOut, animations: {
-            self.upgradedBanner.alpha = 0
-            self.upgradedBannerTopConstraint.constant -= 32
-            self.view.layoutIfNeeded()
-
-        })
-    }
+    
     
     @objc func fillProgress() {
+        self.createEndowmentAccount()
         progressBarBtn.setBackgroundImage(UIImage(named: "progress-full"), for: .normal)
-        progressBarBtn.isUserInteractionEnabled = false
-        congradulationPopup()
+        isBannerReady = true
     }
     
     func congradulationPopup() {
         let popup = PopupDialog(title: popupTitle, message: popupMessage, image: popupImage)
         let claimButton = DefaultButton(title: "CLAIM") {
-            self.createEndowmentAccount()
+            //TODO:
         }
         
         popup.addButtons([claimButton])
@@ -117,7 +101,7 @@ class JourneyViewController: UIViewController {
     
     func createEndowmentAccount(){
         let clientID = defaults.string(forKey: "clientID") // fetched during onboarding flow
-
+        
         let createFixedDepAccountURL = "https://razerhackathon.sandbox.mambu.com/api/savings"
         let accountHolderType = "CLIENT"
         let accountState = "APPROVED"
@@ -150,6 +134,23 @@ class JourneyViewController: UIViewController {
         }
     }
     
+    func animateBanner(){
+        view.layoutIfNeeded()
+        UIView.animate(withDuration: 1, delay: 1, options: .curveEaseIn, animations: {
+            self.upgradedBanner.alpha = 1
+            self.upgradedBannerTopConstraint.constant -= 32
+            self.view.layoutIfNeeded()
+            
+        })
+        
+        UIView.animate(withDuration: 1, delay: 0, options: .curveEaseOut, animations: {
+            self.upgradedBanner.alpha = 0
+            self.upgradedBannerTopConstraint.constant -= 32
+            self.view.layoutIfNeeded()
+            
+        })
+    }
+    
     @IBAction func onTapProgress(_ sender: Any) {
         if !progressFilled {
             UIView.animate(withDuration: 0.3, animations: {
@@ -158,6 +159,12 @@ class JourneyViewController: UIViewController {
                 self.questYConstraint.constant = 0
                 self.view.layoutIfNeeded()
             })
+        } else if progressFilled && isBannerReady {
+            animateBanner()
+            isCongradulationReady = true
+        } else if progressFilled && isBannerReady && isCongradulationReady {
+            congradulationPopup()
+            progressBarBtn.isUserInteractionEnabled = false
         }
     }
     

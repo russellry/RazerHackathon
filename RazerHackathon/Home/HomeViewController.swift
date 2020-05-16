@@ -36,6 +36,7 @@ class HomeViewController: UIViewController {
         super.viewDidAppear(true)
         obtainClientAccounts { (clientaccounts) in
             self.accounts = clientaccounts
+            self.accountsCollection.reloadData()
             let currentAccountID = self.accounts[0].encodedKey
             self.getAllTransactions(currentAccountID: currentAccountID)
             // We only take 1 scenario where a student has both current and savings.
@@ -114,7 +115,7 @@ class HomeViewController: UIViewController {
                 let data = try? JSONEncoder().encode(deposit)
                 let params = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as? [String: Any]
                 AF.request(depositURL, method: .post, parameters: params, encoding: JSONEncoding.default,  headers: HTTPHeaders(headers)).responseJSON(completionHandler: { _ in
-                    self.transactionTable.reloadData()
+                    self.getAllTransactions(currentAccountID: currentAccountID)
                 })
             }
         } catch {
@@ -141,6 +142,11 @@ class HomeViewController: UIViewController {
             let data = try? JSONEncoder().encode(transfer)
             let params = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as? [String: Any]
             AF.request(depositURL, method: .post, parameters: params, encoding: JSONEncoding.default,  headers: HTTPHeaders(headers)).responseJSON(completionHandler: { _ in
+                self.obtainClientAccounts(onCompletion: { clientacc in
+                    self.accounts = clientacc
+                    self.getAllTransactions(currentAccountID: self.accounts[0].encodedKey)
+                    self.accountsCollection.reloadData()
+                })
             })
         } catch {
             print(error)
@@ -159,14 +165,17 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         
         let transaction = transactions[indexPath.row]
         cell.descLabel.text = transaction.comment
-        
+
         let type = transaction.type
-        
+
         if type == "DEPOSIT" {
-            cell.amountLabel.text = "+ SGD \(transaction.amount)"
+            cell.amountLabel.text = "+ SGD \(transaction.amount).00"
             cell.amountLabel.textColor = .systemGreen
+            print("my type is \(type)")
         } else {
-            cell.amountLabel.text = "- SGD \(transaction.amount)"
+            let amount = transaction.amount.description.replacingOccurrences(of: "-", with: "")
+            cell.amountLabel.text = "- SGD \(amount).00"
+            cell.amountLabel.textColor = .black
         }
         
         return cell
