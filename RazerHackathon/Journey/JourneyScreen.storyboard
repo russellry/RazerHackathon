@@ -214,7 +214,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bpQ-Qe-DVK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1371.0144927536232" y="-216.29464285714286"/>
+            <point key="canvasLocation" x="1284" y="-423"/>
         </scene>
         <!--DiscoverDailyScreen-->
         <scene sceneID="XBd-do-EX1">
