@@ -13,7 +13,6 @@ class HomeViewController: UIViewController {
     let defaults = UserDefaults.standard
     var accounts = [ClientAccountModel]()
     var transactions = [TransactionModel]()
-    let clientID = "8a8e87947217506401721c02f7b0293d" //TODO: delete before upload code
     
     @IBOutlet weak var transactionTable: UITableView!
     @IBOutlet weak var accountsCollection: UICollectionView!
@@ -31,6 +30,7 @@ class HomeViewController: UIViewController {
             self.accounts = clientaccounts
             self.accountsCollection.reloadData()
             self.depositIntoCurrentAccount()
+            self.transferOutFromCurrentAccount()
             let currentAccountID = self.accounts[0].encodedKey
             self.getAllTransactions(currentAccountID: currentAccountID)
         }
@@ -56,8 +56,8 @@ class HomeViewController: UIViewController {
     }
     
     func obtainClientAccounts(onCompletion: @escaping ((_: [ClientAccountModel]) -> Void)) {
-        //        let clientID = defaults.string(forKey: "clientID") // fetched during onboarding flow
-        let obtainClientAccountURL = "https://razerhackathon.sandbox.mambu.com/api/clients/\(clientID)/savings"
+        let clientID = defaults.string(forKey: "clientID") // fetched during onboarding flow
+        let obtainClientAccountURL = "https://razerhackathon.sandbox.mambu.com/api/clients/\(clientID!)/savings"
         let user = "Team11"
         let password = "pass8AE7D4715"
         let credentialData = "\(user):\(password)".data(using: String.Encoding.utf8)!
@@ -65,6 +65,7 @@ class HomeViewController: UIViewController {
         let headers = ["Authorization": "Basic \(base64Credentials)"]
         
         AF.request(obtainClientAccountURL, method: .get, headers: HTTPHeaders(headers)).responseJSON { response in
+            debugPrint(response)
             do {
                 let result = try JSONDecoder().decode([ClientAccountModel].self, from: response.data!)
                 onCompletion(result)
@@ -91,11 +92,13 @@ class HomeViewController: UIViewController {
         let notesArr = ["Money from part-time job","Side Hustle","Business Deal","Walking the neighbours dog","Car Wash" ]
         let depositURL = "https://razerhackathon.sandbox.mambu.com/api/savings/\(currentAccountID)/transactions"
         do {
-            for i in 0...4 {
+            for i in 0...2 {
                 let deposit = DepositModel(amount: Double(amount[i]), notes: notesArr[i], type: type, method: method, customInformation: [CustomInformation(value: value, customFieldID: customID)])
                 let data = try? JSONEncoder().encode(deposit)
                 let params = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as? [String: Any]
-                AF.request(depositURL, method: .post, parameters: params, encoding: JSONEncoding.default,  headers: HTTPHeaders(headers))
+                AF.request(depositURL, method: .post, parameters: params, encoding: JSONEncoding.default,  headers: HTTPHeaders(headers)).responseJSON(completionHandler: { _ in
+                    self.transactionTable.reloadData()
+                })
             }
         } catch {
             print(error)
@@ -120,7 +123,10 @@ class HomeViewController: UIViewController {
             let transfer = TransferModel(type: type, amount: amount, notes: notes, toSavingsAccount: savingsAccountID, method: method)
                 let data = try? JSONEncoder().encode(transfer)
                 let params = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as? [String: Any]
-                AF.request(depositURL, method: .post, parameters: params, encoding: JSONEncoding.default,  headers: HTTPHeaders(headers))
+            AF.request(depositURL, method: .post, parameters: params, encoding: JSONEncoding.default,  headers: HTTPHeaders(headers)).responseJSON(completionHandler: { response in
+                debugPrint(response)
+                
+            })
         } catch {
             print(error)
         }

@@ -30,11 +30,11 @@ class JourneyViewController: UIViewController {
     @IBOutlet weak var upgradedBannerTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var discoverDailyLabel: UILabel!
     @IBOutlet weak var discoverContentLabel: UILabel!
-    
+    let defaults = UserDefaults.standard
+
     let popupTitle = "HEY THERE!"
     let popupMessage = "Here's a reward on us." + "\n" + "2 FREE GAME CHANCES"
     let popupImage = UIImage(named: "sneki-graduated")
-    let clientID = "8a8e87947217506401721c02f7b0293d" //TODO: delete before upload code
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -116,7 +116,7 @@ class JourneyViewController: UIViewController {
     }
     
     func createEndowmentAccount(){
-        //        let clientID = defaults.string(forKey: "clientID") // fetched during onboarding flow
+        let clientID = defaults.string(forKey: "clientID") // fetched during onboarding flow
 
         let createFixedDepAccountURL = "https://razerhackathon.sandbox.mambu.com/api/savings"
         let accountHolderType = "CLIENT"
@@ -133,7 +133,7 @@ class JourneyViewController: UIViewController {
         let headers = ["Authorization": "Basic \(base64Credentials)"]
         
         do {
-            let deposit = EndowmentAccountModel(savingsAccount: SavingsAccount(accountHolderType: accountHolderType, accountHolderKey: clientID, accountState: accountState, productTypeKey: productTypeKey, allowOverdraft: allowOverdraft, accountType: accountType, interestSettings: InterestSettings(interestRate: interestRate)))
+            let deposit = EndowmentAccountModel(savingsAccount: SavingsAccount(accountHolderType: accountHolderType, accountHolderKey: clientID!, accountState: accountState, productTypeKey: productTypeKey, allowOverdraft: allowOverdraft, accountType: accountType, interestSettings: InterestSettings(interestRate: interestRate)))
             let data = try? JSONEncoder().encode(deposit)
             let params = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as? [String: Any]
             AF.request(createFixedDepAccountURL, method: .post, parameters: params, encoding: JSONEncoding.default,  headers: HTTPHeaders(headers)).responseJSON(completionHandler: { response in

@@ -236,7 +236,7 @@
         <scene sceneID="6cC-d7-sfl">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="5HB-p5-ELa" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Journey" image="arrow.up.square.fill" catalog="system" id="tdK-36-H98"/>
+                    <tabBarItem key="tabBarItem" title="Journey" image="razer" id="tdK-36-H98"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="IRb-kA-MeS">
@@ -255,7 +255,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="arrow.up.square.fill" catalog="system" width="128" height="114"/>
         <image name="banner" width="345" height="117"/>
         <image name="bg-1" width="375" height="536"/>
         <image name="credits" width="131" height="36"/>
@@ -265,5 +264,6 @@
         <image name="mascot-grad" width="298" height="329"/>
         <image name="progress" width="308" height="161"/>
         <image name="quest" width="281" height="311"/>
+        <image name="razer" width="30" height="31"/>
     </resources>
 </document>

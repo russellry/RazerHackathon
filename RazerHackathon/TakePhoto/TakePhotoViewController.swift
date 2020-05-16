@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Photos
 
 class TakePhotoViewController: UIViewController {
     
@@ -24,7 +23,7 @@ class TakePhotoViewController: UIViewController {
 extension TakePhotoViewController {
     override func viewDidLoad() {
         overrideUserInterfaceStyle = .light
-
+        
         
         func configureCameraController() {
             cameraController.prepare {(error) in
@@ -32,7 +31,7 @@ extension TakePhotoViewController {
                     print(error)
                 }
                 try? self.cameraController.displayPreview(on: self.capturePreviewView)
-
+                
             }
         }
         
@@ -51,7 +50,7 @@ extension TakePhotoViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toVerifySuccessScreen" {
             if let vc = segue.destination as? UINavigationController, let targetController = vc.topViewController as? VerifySuccessViewController {
-                targetController.base64image = convertImageToBase64String(img: image)
+                targetController.base64image = convertImageToBase64String(img: self.image)
             }
         }
     }
@@ -65,11 +64,8 @@ extension TakePhotoViewController {
                 print(error ?? "Image capture error")
                 return
             }
-            
             self.image = image
-            
             self.performSegue(withIdentifier: "toVerifySuccessScreen", sender: nil)
-            //TODO: convert image to base64 -> then send it to API.
             
         }
     }
