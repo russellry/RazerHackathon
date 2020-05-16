@@ -1,0 +1,32 @@
+PODS:
+  - Alamofire (5.0.5)
+  - DynamicBlurView (3.0.1)
+  - PopupDialog (0.9.2):
+    - DynamicBlurView (~> 3.0.1)
+  - SkeletonView (1.8.7)
+  - SwiftSpinner (2.1.0)
+
+DEPENDENCIES:
+  - Alamofire
+  - PopupDialog (~> 0.4)
+  - SkeletonView
+  - SwiftSpinner
+
+SPEC REPOS:
+  trunk:
+    - Alamofire
+    - DynamicBlurView
+    - PopupDialog
+    - SkeletonView
+    - SwiftSpinner
+
+SPEC CHECKSUMS:
+  Alamofire: df2f8f826963b08b9a870791ad48e07a10090b2e
+  DynamicBlurView: b1df5415f9bd31897549e5d7077e5ec120a4d636
+  PopupDialog: f4bb461bf70ff422be0b56656566424ee9273080
+  SkeletonView: ba5370f41280b2f0a76918bb143c1294232bb4f4
+  SwiftSpinner: 0f15c006307f8d8bbac075638927ec1361b565d7
+
+PODFILE CHECKSUM: fe2441ddfe14a702759bbdd2c349fc099cd907de
+
+COCOAPODS: 1.8.4
