@@ -14,7 +14,7 @@ class JourneyViewController: UIViewController {
     
     let scratchthecard = "https://light.microsite.perxtech.io/game/2?token=a97c73454236f3d093d64cdb2884be1ee6908dd2f7815c3eba5641ee6315ee64"
     let spinthewheel = "https://light.microsite.perxtech.io/game/4?token=a97c73454236f3d093d64cdb2884be1ee6908dd2f7815c3eba5641ee6315ee64"
-    let shakethetree = "https://light.microsite.perxtech.io/game/7?token=a97c73454236f3d093d64cdb2884be1ee6908dd2f7815c3eba5641ee6315ee64"
+    let shakethetree = "https://light.microsite.perxtech.io/game/8?token=a97c73454236f3d093d64cdb2884be1ee6908dd2f7815c3eba5641ee6315ee64"
     var destinationGame = ""
     @IBOutlet weak var discoverDailyOuterView: UIView!
     @IBOutlet weak var enterBtn: UIButton!
@@ -42,23 +42,11 @@ class JourneyViewController: UIViewController {
         setupUI()
     }
     
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(true)
-        if progressFilled {
-            self.backgroundView.image = UIImage(named: "bg-2")
-            self.snekiSnek.setImage(UIImage(named: "mascot-work"), for: .normal)
-            transition()
-        }
-        
-    }
-    
     func transition(){
         discoverDailyOuterView.backgroundColor = UIColor(red:0.46, green:0.08, blue:0.14, alpha:1.0)
         discoverDailyLabel.textColor = .white
         discoverContentLabel.text = "We’re so proud of you. Let us get you ready for new goals! "
     }
-    
-    
     
     @objc func fillProgress() {
         self.createEndowmentAccount()
@@ -116,6 +104,7 @@ class JourneyViewController: UIViewController {
             let params = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as? [String: Any]
             AF.request(createFixedDepAccountURL, method: .post, parameters: params, encoding: JSONEncoding.default,  headers: HTTPHeaders(headers)).responseJSON(completionHandler: { _ in
                 isSavingsAccountCreated = true
+                self.tabBarController?.selectedIndex = 0
             })
         } catch {
             print(error)
