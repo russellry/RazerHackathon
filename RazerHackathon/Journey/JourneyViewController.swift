@@ -9,13 +9,16 @@
 import UIKit
 import PopupDialog
 import Alamofire
+import SwiftSpinner
 
 class JourneyViewController: UIViewController {
     
-    let scratchthecard = "https://light.microsite.perxtech.io/game/2?token=a97c73454236f3d093d64cdb2884be1ee6908dd2f7815c3eba5641ee6315ee64"
-    let spinthewheel = "https://light.microsite.perxtech.io/game/4?token=a97c73454236f3d093d64cdb2884be1ee6908dd2f7815c3eba5641ee6315ee64"
-    let shakethetree = "https://light.microsite.perxtech.io/game/8?token=a97c73454236f3d093d64cdb2884be1ee6908dd2f7815c3eba5641ee6315ee64"
+    let scratchthecard = scratchGameURL
+    let spinthewheel = spinGameURL
+    let shakethetree = shakeGameURL
     var destinationGame = ""
+    let defaults = UserDefaults.standard
+    
     @IBOutlet weak var discoverDailyOuterView: UIView!
     @IBOutlet weak var enterBtn: UIButton!
     @IBOutlet weak var gamesView: UIView!
@@ -30,16 +33,17 @@ class JourneyViewController: UIViewController {
     @IBOutlet weak var upgradedBannerTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var discoverDailyLabel: UILabel!
     @IBOutlet weak var discoverContentLabel: UILabel!
-    let defaults = UserDefaults.standard
-    
-    let popupTitle = "HEY THERE!"
-    let popupMessage = "You've unlocked CAREER STARTER! " + "\n" + "Here's a reward on us."
-    let popupImage = UIImage(named: "sneki-graduated")
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        NotificationCenter.default.addObserver(self, selector: #selector(fillProgress), name: .progressFilled, object: nil)
         setupUI()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let vc = segue.destination as? GamesViewController {
+            vc.gameURL = self.destinationGame
+        }
     }
     
     func transition(){
@@ -48,17 +52,15 @@ class JourneyViewController: UIViewController {
         discoverContentLabel.text = "We’re so proud of you. Let us get you ready for new goals! "
     }
     
-    @objc func fillProgress() {
-        self.createEndowmentAccount()
-        progressBarBtn.setBackgroundImage(UIImage(named: "progress-full"), for: .normal)
-        isCongradulationReady = true
-    }
-    
     func congradulationPopup() {
+        let popupTitle = "HEY THERE!"
+        let popupMessage = "You've unlocked CAREER STARTER! " + "\n" + "Here's a reward on us."
+        let popupImage = UIImage(named: "sneki-graduated")
         let popup = PopupDialog(title: popupTitle, message: popupMessage, image: popupImage)
         let claimButton = DefaultButton(title: "CLAIM") {
             self.backgroundView.image = UIImage(named: "bg-2")
             self.snekiSnek.setImage(UIImage(named: "mascot-work"), for: .normal)
+            self.progressBarBtn.setBackgroundImage(UIImage(named: "progress"), for: .normal)
             self.transition()
         }
         
@@ -66,24 +68,10 @@ class JourneyViewController: UIViewController {
         self.present(popup, animated: true, completion: nil)
     }
     
-    fileprivate func setupUI() {
-        questBtn.adjustsImageWhenHighlighted = false
-        questBtn.adjustsImageWhenDisabled = false
-        overrideUserInterfaceStyle = .light
-        enterBtn.layer.cornerRadius = 8
-        gamesView.roundCorners([.topRight, .topLeft], radius: 16)
-        playToLevelUpBtn.layer.cornerRadius = 8
-        discoverDailyOuterView.layer.cornerRadius = 8
-        discoverDailyOuterView.layer.masksToBounds = false
-        discoverDailyOuterView.layer.shadowRadius = 4
-        discoverDailyOuterView.layer.shadowOpacity = 1
-        discoverDailyOuterView.layer.shadowColor = UIColor.gray.cgColor
-        discoverDailyOuterView.layer.shadowOffset = CGSize(width: 0 , height:2)
-    }
+
     
     func createEndowmentAccount(){
         let clientID = defaults.string(forKey: "clientID") // fetched during onboarding flow
-        
         let createFixedDepAccountURL = "https://razerhackathon.sandbox.mambu.com/api/savings"
         let accountHolderType = "CLIENT"
         let accountState = "APPROVED"
@@ -100,16 +88,13 @@ class JourneyViewController: UIViewController {
             let params = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as? [String: Any]
             AF.request(createFixedDepAccountURL, method: .post, parameters: params, encoding: JSONEncoding.default,  headers: headers).responseJSON(completionHandler: { _ in
                 isSavingsAccountCreated = true
+                SwiftSpinner.show(duration: 4.0, title: "Creating an Endowment Plan for you...").addTapHandler({
+                    SwiftSpinner.hide()
+                })
                 self.tabBarController?.selectedIndex = 0
             })
         } catch {
             print(error)
-        }
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let vc = segue.destination as? GamesViewController {
-            vc.gameURL = self.destinationGame
         }
     }
     
@@ -119,7 +104,6 @@ class JourneyViewController: UIViewController {
             self.upgradedBanner.alpha = 1
             self.upgradedBannerTopConstraint.constant += 16
             self.view.layoutIfNeeded()
-            
         })
         
         UIView.animate(withDuration: 3, delay: 0, options: .curveEaseOut, animations: {
@@ -128,6 +112,21 @@ class JourneyViewController: UIViewController {
             self.view.layoutIfNeeded()
             
         })
+    }
+    
+    fileprivate func setupUI() {
+        questBtn.adjustsImageWhenHighlighted = false
+        questBtn.adjustsImageWhenDisabled = false
+        overrideUserInterfaceStyle = .light
+        enterBtn.layer.cornerRadius = 8
+        gamesView.roundCorners([.topRight, .topLeft], radius: 16)
+        playToLevelUpBtn.layer.cornerRadius = 8
+        discoverDailyOuterView.layer.cornerRadius = 8
+        discoverDailyOuterView.layer.masksToBounds = false
+        discoverDailyOuterView.layer.shadowRadius = 4
+        discoverDailyOuterView.layer.shadowOpacity = 1
+        discoverDailyOuterView.layer.shadowColor = UIColor.gray.cgColor
+        discoverDailyOuterView.layer.shadowOffset = CGSize(width: 0 , height:2)
     }
     
     @IBAction func onTapProgress(_ sender: Any) {
@@ -154,7 +153,9 @@ class JourneyViewController: UIViewController {
             self.questYConstraint.constant = 32
             self.view.layoutIfNeeded()
             progressFilled = true
-            NotificationCenter.default.post(Notification(name: .progressFilled))
+            self.createEndowmentAccount()
+            self.progressBarBtn.setBackgroundImage(UIImage(named: "progress-full"), for: .normal)
+            isCongradulationReady = true
         })
     }
     

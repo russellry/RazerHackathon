@@ -15,7 +15,7 @@ class VerifySuccessViewController: UIViewController {
     var base64image: String?
     let verifyNRICURL: String = eKYCFwdURL
     let baseURL: String = mambuBaseURL
-
+    
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var typeLabel: UILabel!
     @IBOutlet weak var bdayLabel: UILabel!
@@ -107,7 +107,7 @@ class VerifySuccessViewController: UIViewController {
         let idTempKey = "8a8e867271bd280c0171bf7e4ec71b01"
         let docType = "NRIC/Passport Number"
         let docId = credentials.vision.extract.idNum
-
+        
         let client = ClientModel(client: Client(firstName:firstName, lastName: lastName, assignedBranchKey: branchID), idDocuments: [IDDocuments(identificationDocumentTemplateKey: idTempKey, documentType: docType, documentId: docId)])
         
         let data = try? JSONEncoder().encode(client)
@@ -120,7 +120,11 @@ class VerifySuccessViewController: UIViewController {
             AF.request(clientsURL, method: .post, parameters: params, encoding: JSONEncoding.default,  headers: headers).responseJSON { response in
                 
                 let result = try? JSONDecoder().decode(ClientModelResponse.self, from: response.data!)
-                onCompletion((result?.client.encodedKey)!)
+                if let id = result?.client.encodedKey {
+                    onCompletion(id)
+                } else {
+                    onCompletion("")
+                }
             }
         } catch {
             print(error)

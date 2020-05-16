@@ -9,20 +9,33 @@
 import UIKit
 import Alamofire
 
+let colId = "AccountCollectionViewCell"
+
 class HomeViewController: UIViewController {
     let defaults = UserDefaults.standard
     var currentAccNo = ""
     var savingsAccNo = ""
     var accounts = [ClientAccountModel]()
     var transactions = [TransactionModel]()
+    let baseURL = mambuBaseURL
     
     @IBOutlet weak var transactionTable: UITableView!
     @IBOutlet weak var accountsCollection: UICollectionView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         overrideUserInterfaceStyle = .light
-        let nibCell = UINib(nibName: "AccountCollectionViewCell", bundle: nil)
-        self.accountsCollection.register(nibCell, forCellWithReuseIdentifier: "AccountCollectionViewCell")
+        let nibCell = UINib(nibName: colId, bundle: nil)
+        self.accountsCollection.register(nibCell, forCellWithReuseIdentifier: colId)
+        loadFirstProcess()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        loadSubsequentProcesses()
+    }
+    
+    func loadFirstProcess() {
         obtainClientAccounts { (clientaccounts) in
             self.accounts = clientaccounts
             self.accountsCollection.reloadData()
@@ -32,8 +45,7 @@ class HomeViewController: UIViewController {
         }
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(true)
+    func loadSubsequentProcesses(){
         obtainClientAccounts { (clientaccounts) in
             self.accounts = clientaccounts
             self.accountsCollection.reloadData()
@@ -54,25 +66,9 @@ class HomeViewController: UIViewController {
         }
     }
     
-    func getAllTransactions(currentAccountID: String) {
-        let getAllTransactionURL = "https://razerhackathon.sandbox.mambu.com/api/savings/\(currentAccountID)/transactions"
-
-        let headers = mambuBasicAuth()
-        
-        AF.request(getAllTransactionURL, method: .get, headers: headers).responseJSON { response in
-            do {
-                let result = try JSONDecoder().decode([TransactionModel].self, from: response.data!)
-                self.transactions = result
-                self.transactionTable.reloadData()
-            } catch {
-                NSLog("Failed to fetch transactions")
-            }
-        }
-    }
-    
     func obtainClientAccounts(onCompletion: @escaping ((_: [ClientAccountModel]) -> Void)) {
         let clientID = defaults.string(forKey: "clientID") // fetched during onboarding flow
-        let obtainClientAccountURL = "https://razerhackathon.sandbox.mambu.com/api/clients/\(clientID!)/savings"
+        let obtainClientAccountURL = mambuBaseURL + "clients/\(clientID!)/savings"
         
         let headers = mambuBasicAuth()
         
@@ -98,9 +94,9 @@ class HomeViewController: UIViewController {
         let customID = "IDENTIFIER_TRANSACTION_CHANNEL_I"
         let method = "bank"
         let notesArr = ["Money from part-time job","Side Hustle","Business Deal","Walking the neighbours dog","Car Wash" ]
-        let depositURL = "https://razerhackathon.sandbox.mambu.com/api/savings/\(currentAccountID)/transactions"
+        let depositURL = mambuBaseURL +  "savings/\(currentAccountID)/transactions"
         do {
-            for i in 0...2 {
+            for i in 0...3 {
                 let deposit = DepositModel(amount: Double(amount[i]), notes: notesArr[i], type: type, method: method, customInformation: [CustomInformation(value: value, customFieldID: customID)])
                 let data = try? JSONEncoder().encode(deposit)
                 let params = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as? [String: Any]
@@ -113,6 +109,22 @@ class HomeViewController: UIViewController {
         }
     }
     
+    func getAllTransactions(currentAccountID: String) {
+        let getAllTransactionURL = mambuBaseURL + "savings/\(currentAccountID)/transactions"
+
+        let headers = mambuBasicAuth()
+        
+        AF.request(getAllTransactionURL, method: .get, headers: headers).responseJSON { response in
+            do {
+                let result = try JSONDecoder().decode([TransactionModel].self, from: response.data!)
+                self.transactions = result
+                self.transactionTable.reloadData()
+            } catch {
+                NSLog("Failed to fetch transactions")
+            }
+        }
+    }
+    
     func transferOutFromCurrentAccount(fromAccount: String, toAccount: String) {
         let currentAccountID = fromAccount
         let savingsAccountID = toAccount
@@ -120,11 +132,12 @@ class HomeViewController: UIViewController {
         let headers = mambuBasicAuth()
 
         let type = "TRANSFER"
-        let notes = "Save Together with Razer Pay"
+        let notes = "For the house"
         let amount = "20"
         let method = "bank"
         
-        let depositURL = "https://razerhackathon.sandbox.mambu.com/api/savings/\(currentAccountID)/transactions"
+        let depositURL = mambuBaseURL + "savings/\(currentAccountID)/transactions"
+        
         do {
             let transfer = TransferModel(type: type, amount: amount, notes: notes, toSavingsAccount: savingsAccountID, method: method)
             let data = try? JSONEncoder().encode(transfer)
@@ -164,16 +177,12 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
             cell.amountLabel.text = "- SGD \(amount).00"
             cell.amountLabel.textColor = .black
         }
-        
         return cell
-        
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
     }
-    
-    
 }
 
 
@@ -183,7 +192,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AccountCollectionViewCell", for: indexPath) as! AccountCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: colId, for: indexPath) as! AccountCollectionViewCell
         
         let account = accounts[indexPath.row]
         
@@ -195,10 +204,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
         let accountID = accounts[indexPath.row].encodedKey
         getAllTransactions(currentAccountID: accountID)
-        
     }
-    
 }

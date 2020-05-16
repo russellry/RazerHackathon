@@ -1,10 +1,11 @@
 //
-//  ViewController.swift
+//  TakePhotoViewController.swift
 //  AV Foundation
 //
 //  Created by Pranjal Satija on 5/22/17.
 //  Copyright © 2017 Pranjal Satija. All rights reserved.
 //
+//  Did not write this -> All credit belongs to Pranjal Satija :D
 
 import UIKit
 
@@ -23,7 +24,6 @@ class TakePhotoViewController: UIViewController {
 extension TakePhotoViewController {
     override func viewDidLoad() {
         overrideUserInterfaceStyle = .light
-        
         
         func configureCameraController() {
             cameraController.prepare {(error) in
