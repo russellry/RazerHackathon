@@ -8,7 +8,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Home View Controller-->
+        <!--Home-->
         <scene sceneID="WOQ-5p-Ei5">
             <objects>
                 <viewController id="RT2-KS-WdP" customClass="HomeViewController" customModule="RazerHackathon" customModuleProvider="target" sceneMemberID="viewController">
@@ -17,10 +17,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f0f-dz-bEB">
-                                <rect key="frame" x="0.0" y="88" width="414" height="217.5"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="230.5"/>
                                 <subviews>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="wZP-Eg-xOj">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="217.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="230.5"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="I5t-Il-HSs">
                                             <size key="itemSize" width="414" height="217.5"/>
@@ -30,7 +30,7 @@
                                         </collectionViewFlowLayout>
                                         <cells>
                                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="AccountCollectionViewCell" id="jJR-F2-ZMz" customClass="AccountCollectionViewCell" customModule="RazerHackathon" customModuleProvider="target">
-                                                <rect key="frame" x="20" y="0.0" width="414" height="217.5"/>
+                                                <rect key="frame" x="20" y="6.5" width="414" height="217.5"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Yzt-ZD-08g">
                                                     <rect key="frame" x="0.0" y="0.0" width="414" height="217.5"/>
@@ -53,7 +53,7 @@
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="rAG-aX-EBV">
-                                <rect key="frame" x="0.0" y="342.5" width="414" height="470.5"/>
+                                <rect key="frame" x="0.0" y="311.5" width="414" height="501.5"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TransactionCell" id="37r-0o-gBU" customClass="TransactionTableViewCell" customModule="RazerHackathon" customModuleProvider="target">
@@ -95,7 +95,7 @@
                                 </connections>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Recent Transactions" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sh6-yc-EUJ">
-                                <rect key="frame" x="12" y="313.5" width="156" height="21"/>
+                                <rect key="frame" x="12" y="282.5" width="156" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -116,6 +116,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="sqK-IK-f2v"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Home" image="doc.plaintext" catalog="system" id="BT8-3M-Zx8"/>
                     <navigationItem key="navigationItem" id="zvk-2T-7TD"/>
                     <connections>
                         <outlet property="accountsCollection" destination="wZP-Eg-xOj" id="Jzb-x6-g1e"/>
@@ -124,52 +125,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AcI-Zi-tEj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="979.71014492753636" y="20.758928571428569"/>
+            <point key="canvasLocation" x="138" y="21"/>
         </scene>
-        <!--Home-->
-        <scene sceneID="V5u-wm-jSE">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="g4U-a0-VCH" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Home" image="doc.plaintext" catalog="system" id="LRa-aK-VGE"/>
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="JaB-81-7Vv">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" red="0.48131018879999998" green="0.71884435420000004" blue="0.29009053109999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="RT2-KS-WdP" kind="relationship" relationship="rootViewController" id="xxv-qB-jJP"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="d7M-U8-VaP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="262" y="21"/>
-        </scene>
-        <!--AccountScreen-->
-        <scene sceneID="AOv-NJ-9s1">
-            <objects>
-                <viewControllerPlaceholder storyboardName="AccountScreen" id="8bu-zf-WVB" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" id="G4U-gz-lRS"/>
-                </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="oth-WZ-qIi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-227" y="441"/>
-        </scene>
-        <!--JourneyScreen-->
-        <scene sceneID="V8H-1c-28q">
-            <objects>
-                <viewControllerPlaceholder storyboardName="JourneyScreen" id="zCB-fv-3Te" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" id="RKf-Bn-hey"/>
-                </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="lSE-Gm-Cok" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-636" y="428"/>
-        </scene>
-        <!--Tab Bar Controller-->
+        <!--Tab Bar View Controller-->
         <scene sceneID="W39-eS-GOS">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="Az9-WK-red" sceneMemberID="viewController">
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="Az9-WK-red" customClass="TabBarViewController" customModule="RazerHackathon" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ceW-f0-AcT">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
@@ -178,14 +139,34 @@
                         <color key="selectedImageTintColor" red="0.59860128160000003" green="0.76610368490000003" blue="0.33323013779999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     </tabBar>
                     <connections>
-                        <segue destination="g4U-a0-VCH" kind="relationship" relationship="viewControllers" id="muc-YB-Fxe"/>
-                        <segue destination="zCB-fv-3Te" kind="relationship" relationship="viewControllers" id="JGz-ro-vo7"/>
-                        <segue destination="8bu-zf-WVB" kind="relationship" relationship="viewControllers" id="H5L-0S-iFA"/>
+                        <segue destination="RT2-KS-WdP" kind="relationship" relationship="viewControllers" id="U5k-YS-lnP"/>
+                        <segue destination="SCz-zn-roU" kind="relationship" relationship="viewControllers" id="Nqs-qr-dcL"/>
+                        <segue destination="WQZ-rI-MFX" kind="relationship" relationship="viewControllers" id="ivj-gd-KhS"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SmR-rE-stD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-558" y="21"/>
+        </scene>
+        <!--JourneyScreen-->
+        <scene sceneID="JFB-ZA-f0t">
+            <objects>
+                <viewControllerPlaceholder storyboardName="JourneyScreen" id="SCz-zn-roU" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="HIm-bi-Lzb"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qAS-ho-iMd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-559" y="461"/>
+        </scene>
+        <!--AccountScreen-->
+        <scene sceneID="K2B-GO-NM3">
+            <objects>
+                <viewControllerPlaceholder storyboardName="AccountScreen" id="WQZ-rI-MFX" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="fIf-X8-oez"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="M2o-LI-TvT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-269" y="461"/>
         </scene>
     </scenes>
     <resources>

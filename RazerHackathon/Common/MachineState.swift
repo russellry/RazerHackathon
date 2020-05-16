@@ -10,3 +10,4 @@ import Foundation
 
 public var progressFilled = false
 public var rewardCollected = false
+public var isSavingsAccountCreated = false

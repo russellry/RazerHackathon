@@ -136,9 +136,8 @@ class JourneyViewController: UIViewController {
             let deposit = EndowmentAccountModel(savingsAccount: SavingsAccount(accountHolderType: accountHolderType, accountHolderKey: clientID!, accountState: accountState, productTypeKey: productTypeKey, allowOverdraft: allowOverdraft, accountType: accountType, interestSettings: InterestSettings(interestRate: interestRate)))
             let data = try? JSONEncoder().encode(deposit)
             let params = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as? [String: Any]
-            AF.request(createFixedDepAccountURL, method: .post, parameters: params, encoding: JSONEncoding.default,  headers: HTTPHeaders(headers)).responseJSON(completionHandler: { response in
-                
-                
+            AF.request(createFixedDepAccountURL, method: .post, parameters: params, encoding: JSONEncoding.default,  headers: HTTPHeaders(headers)).responseJSON(completionHandler: { _ in
+                isSavingsAccountCreated = true
             })
         } catch {
             print(error)
@@ -152,7 +151,6 @@ class JourneyViewController: UIViewController {
     }
     
     @IBAction func onTapProgress(_ sender: Any) {
-        //TODO: show the popup
         if !progressFilled {
             UIView.animate(withDuration: 0.3, animations: {
                 self.dimThisView.alpha = 0.5

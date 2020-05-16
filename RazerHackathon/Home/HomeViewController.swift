@@ -11,6 +11,8 @@ import Alamofire
 
 class HomeViewController: UIViewController {
     let defaults = UserDefaults.standard
+    var currentAccNo = ""
+    var savingsAccNo = ""
     var accounts = [ClientAccountModel]()
     var transactions = [TransactionModel]()
     
@@ -19,20 +21,35 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         overrideUserInterfaceStyle = .light
-        navigationItem.setHidesBackButton(true, animated: true)
         let nibCell = UINib(nibName: "AccountCollectionViewCell", bundle: nil)
         self.accountsCollection.register(nibCell, forCellWithReuseIdentifier: "AccountCollectionViewCell")
+        obtainClientAccounts { (clientaccounts) in
+            self.accounts = clientaccounts
+            self.accountsCollection.reloadData()
+            self.depositIntoCurrentAccount()
+            let currentAccountID = self.accounts[0].encodedKey
+            self.getAllTransactions(currentAccountID: currentAccountID)
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
         obtainClientAccounts { (clientaccounts) in
             self.accounts = clientaccounts
-            self.accountsCollection.reloadData()
-            self.depositIntoCurrentAccount()
-            self.transferOutFromCurrentAccount()
             let currentAccountID = self.accounts[0].encodedKey
             self.getAllTransactions(currentAccountID: currentAccountID)
+            // We only take 1 scenario where a student has both current and savings.
+            if isSavingsAccountCreated {
+                for account in self.accounts {
+                    if account.accountType == "CURRENT_ACCOUNT" {
+                        self.currentAccNo = account.encodedKey
+                    } else {
+                        self.savingsAccNo = account.encodedKey
+                    }
+                }
+                self.transferOutFromCurrentAccount(fromAccount: self.currentAccNo, toAccount: self.savingsAccNo)
+                isSavingsAccountCreated = false
+            }
         }
     }
     
@@ -78,14 +95,14 @@ class HomeViewController: UIViewController {
     
     func depositIntoCurrentAccount() {
         let currentAccountID = accounts[0].encodedKey
-
+        
         let user = "Team11"
         let password = "pass8AE7D4715"
         let credentialData = "\(user):\(password)".data(using: String.Encoding.utf8)!
         let base64Credentials = credentialData.base64EncodedString()
         let headers = ["Authorization": "Basic \(base64Credentials)"]
         let type = "DEPOSIT"
-        let amount = [200, 2000, 1000, 100, 500]
+        let amount = [20, 50, 20, 100, 500]
         let value = "123456"
         let customID = "IDENTIFIER_TRANSACTION_CHANNEL_I"
         let method = "bank"
@@ -105,9 +122,9 @@ class HomeViewController: UIViewController {
         }
     }
     
-    func transferOutFromCurrentAccount() {
-        let currentAccountID = accounts[0].encodedKey
-        let savingsAccountID = "WBYA568"
+    func transferOutFromCurrentAccount(fromAccount: String, toAccount: String) {
+        let currentAccountID = fromAccount
+        let savingsAccountID = toAccount
         let user = "Team11"
         let password = "pass8AE7D4715"
         let credentialData = "\(user):\(password)".data(using: String.Encoding.utf8)!
@@ -117,15 +134,13 @@ class HomeViewController: UIViewController {
         let notes = "Save Together with Razer Pay"
         let amount = "20"
         let method = "bank"
-
+        
         let depositURL = "https://razerhackathon.sandbox.mambu.com/api/savings/\(currentAccountID)/transactions"
         do {
             let transfer = TransferModel(type: type, amount: amount, notes: notes, toSavingsAccount: savingsAccountID, method: method)
-                let data = try? JSONEncoder().encode(transfer)
-                let params = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as? [String: Any]
-            AF.request(depositURL, method: .post, parameters: params, encoding: JSONEncoding.default,  headers: HTTPHeaders(headers)).responseJSON(completionHandler: { response in
-                debugPrint(response)
-                
+            let data = try? JSONEncoder().encode(transfer)
+            let params = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as? [String: Any]
+            AF.request(depositURL, method: .post, parameters: params, encoding: JSONEncoding.default,  headers: HTTPHeaders(headers)).responseJSON(completionHandler: { _ in
             })
         } catch {
             print(error)
@@ -139,7 +154,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "TransactionCell", for: indexPath) as! TransactionTableViewCell
         
         let transaction = transactions[indexPath.row]
@@ -173,9 +188,8 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AccountCollectionViewCell", for: indexPath) as! AccountCollectionViewCell
-            
+        
         let account = accounts[indexPath.row]
-        print(account)
         
         cell.accountTypeLabel.text = account.accountType
         cell.accountNumberLabel.text = account.encodedKey
@@ -188,7 +202,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         
         let accountID = accounts[indexPath.row].encodedKey
         getAllTransactions(currentAccountID: accountID)
-
+        
     }
     
 }
