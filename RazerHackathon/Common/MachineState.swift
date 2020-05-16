@@ -13,3 +13,4 @@ public var rewardCollected = false
 public var isSavingsAccountCreated = false
 public var isBannerReady = false
 public var isCongradulationReady = false
+public var isMockAPIHidden = true

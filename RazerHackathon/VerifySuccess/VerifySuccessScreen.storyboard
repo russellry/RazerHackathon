@@ -254,6 +254,7 @@
             <point key="canvasLocation" x="469.56521739130437" y="-288.61607142857139"/>
         </scene>
     </scenes>
+    <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
     <resources>
         <image name="onboarding-mascot" width="113" height="113"/>
     </resources>

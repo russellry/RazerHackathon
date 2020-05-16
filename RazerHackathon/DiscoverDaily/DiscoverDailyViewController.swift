@@ -12,7 +12,7 @@ class DiscoverDailyViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        navigationItem.backBarButtonItem?.tintColor = .black
         // Do any additional setup after loading the view.
     }
     

@@ -68,7 +68,7 @@ class HomeViewController: UIViewController {
     
     func obtainClientAccounts(onCompletion: @escaping ((_: [ClientAccountModel]) -> Void)) {
         let clientID = defaults.string(forKey: "clientID") // fetched during onboarding flow
-        let obtainClientAccountURL = mambuBaseURL + "clients/\(clientID!)/savings"
+        let obtainClientAccountURL = baseURL + "clients/\(clientID!)/savings"
         
         let headers = mambuBasicAuth()
         
@@ -94,7 +94,7 @@ class HomeViewController: UIViewController {
         let customID = "IDENTIFIER_TRANSACTION_CHANNEL_I"
         let method = "bank"
         let notesArr = ["Money from part-time job","Side Hustle","Business Deal","Walking the neighbours dog","Car Wash" ]
-        let depositURL = mambuBaseURL +  "savings/\(currentAccountID)/transactions"
+        let depositURL = baseURL +  "savings/\(currentAccountID)/transactions"
         do {
             for i in 0...3 {
                 let deposit = DepositModel(amount: Double(amount[i]), notes: notesArr[i], type: type, method: method, customInformation: [CustomInformation(value: value, customFieldID: customID)])
@@ -110,7 +110,7 @@ class HomeViewController: UIViewController {
     }
     
     func getAllTransactions(currentAccountID: String) {
-        let getAllTransactionURL = mambuBaseURL + "savings/\(currentAccountID)/transactions"
+        let getAllTransactionURL = baseURL + "savings/\(currentAccountID)/transactions"
 
         let headers = mambuBasicAuth()
         
@@ -129,6 +129,10 @@ class HomeViewController: UIViewController {
         let currentAccountID = fromAccount
         let savingsAccountID = toAccount
         
+        setDefaultsValue(key: "currentAccount", value: currentAccountID)
+        setDefaultsValue(key: "endowmentPlan", value: savingsAccountID)
+        isMockAPIHidden = false
+        
         let headers = mambuBasicAuth()
 
         let type = "TRANSFER"
@@ -136,7 +140,7 @@ class HomeViewController: UIViewController {
         let amount = "20"
         let method = "bank"
         
-        let depositURL = mambuBaseURL + "savings/\(currentAccountID)/transactions"
+        let depositURL = baseURL + "savings/\(currentAccountID)/transactions"
         
         do {
             let transfer = TransferModel(type: type, amount: amount, notes: notes, toSavingsAccount: savingsAccountID, method: method)

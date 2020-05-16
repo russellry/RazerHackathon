@@ -11,15 +11,111 @@
         <scene sceneID="5mc-Bj-d2g">
             <objects>
                 <viewController id="fqd-hW-zxT" customClass="AccountViewController" customModule="RazerHackathon" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="MnE-JE-gFd">
+                    <view key="view" alpha="0.0" contentMode="scaleToFill" id="MnE-JE-gFd">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nbh-i1-Ffu">
+                                <rect key="frame" x="124" y="106" width="166" height="25.5"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="20" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2Es-ZO-7b2">
+                                        <rect key="frame" x="0.0" y="0.0" width="166" height="25.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                    </textField>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NIG-lC-SnQ">
+                                        <rect key="frame" x="0.0" y="24.5" width="166" height="1"/>
+                                        <color key="backgroundColor" systemColor="opaqueSeparatorColor" red="0.77647058820000003" green="0.77647058820000003" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="1" id="ua7-Cp-c7g"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="2Es-ZO-7b2" secondAttribute="bottom" id="Lt7-qB-CjB"/>
+                                    <constraint firstItem="NIG-lC-SnQ" firstAttribute="leading" secondItem="Nbh-i1-Ffu" secondAttribute="leading" id="SEq-Go-Mof"/>
+                                    <constraint firstItem="2Es-ZO-7b2" firstAttribute="top" secondItem="Nbh-i1-Ffu" secondAttribute="top" id="cys-sL-i3X"/>
+                                    <constraint firstAttribute="trailing" secondItem="NIG-lC-SnQ" secondAttribute="trailing" id="dCQ-Ge-JiU"/>
+                                    <constraint firstAttribute="bottom" secondItem="NIG-lC-SnQ" secondAttribute="bottom" id="e4N-XF-Ccb"/>
+                                    <constraint firstAttribute="trailing" secondItem="2Es-ZO-7b2" secondAttribute="trailing" id="eJ8-h0-tyb"/>
+                                    <constraint firstItem="2Es-ZO-7b2" firstAttribute="leading" secondItem="Nbh-i1-Ffu" secondAttribute="leading" id="lZp-i8-NTg"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FsA-8g-IdJ">
+                                <rect key="frame" x="107" y="60" width="200" height="30"/>
+                                <state key="normal" title="Deposit into Current Account"/>
+                                <connections>
+                                    <action selector="onTapDeposit:" destination="fqd-hW-zxT" eventType="touchUpInside" id="fBy-fY-shR"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t79-uY-Nkl">
+                                <rect key="frame" x="28.5" y="147.5" width="357" height="30"/>
+                                <state key="normal" title="Transfer from Current Account into Endowment Plan"/>
+                                <connections>
+                                    <action selector="onTapTransfer:" destination="fqd-hW-zxT" eventType="touchUpInside" id="FI3-5G-GPm"/>
+                                </connections>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1k1-UU-WM9">
+                                <rect key="frame" x="124" y="193.5" width="166" height="25.5"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="20" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ghN-ub-mFu">
+                                        <rect key="frame" x="0.0" y="0.0" width="166" height="25.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                    </textField>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bOU-Fy-XEr">
+                                        <rect key="frame" x="0.0" y="24.5" width="166" height="1"/>
+                                        <color key="backgroundColor" systemColor="opaqueSeparatorColor" red="0.77647058820000003" green="0.77647058820000003" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="1" id="LPo-ff-tDM"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="bOU-Fy-XEr" secondAttribute="trailing" id="5PR-ua-mvG"/>
+                                    <constraint firstAttribute="bottom" secondItem="ghN-ub-mFu" secondAttribute="bottom" id="CNr-1Z-IGx"/>
+                                    <constraint firstAttribute="trailing" secondItem="ghN-ub-mFu" secondAttribute="trailing" id="Hcd-w3-LLD"/>
+                                    <constraint firstAttribute="bottom" secondItem="bOU-Fy-XEr" secondAttribute="bottom" id="WcD-Hw-wdx"/>
+                                    <constraint firstItem="ghN-ub-mFu" firstAttribute="leading" secondItem="1k1-UU-WM9" secondAttribute="leading" id="YFo-lw-n5G"/>
+                                    <constraint firstItem="bOU-Fy-XEr" firstAttribute="leading" secondItem="1k1-UU-WM9" secondAttribute="leading" id="b0H-qo-Q98"/>
+                                    <constraint firstItem="ghN-ub-mFu" firstAttribute="top" secondItem="1k1-UU-WM9" secondAttribute="top" id="yha-E9-8A3"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HXR-Ma-p5x">
+                                <rect key="frame" x="156.5" y="251" width="101" height="30"/>
+                                <state key="normal" title="Hide Keyboard"/>
+                                <connections>
+                                    <action selector="onTapHideKeyboard:" destination="fqd-hW-zxT" eventType="touchUpInside" id="i5s-Qu-jfH"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="Nbh-i1-Ffu" firstAttribute="centerX" secondItem="MnE-JE-gFd" secondAttribute="centerX" id="3Xe-vd-3CV"/>
+                            <constraint firstItem="Nbh-i1-Ffu" firstAttribute="top" secondItem="FsA-8g-IdJ" secondAttribute="bottom" constant="16" id="7QF-xR-gsD"/>
+                            <constraint firstItem="HXR-Ma-p5x" firstAttribute="centerX" secondItem="MnE-JE-gFd" secondAttribute="centerX" id="8HK-Ex-aJ3"/>
+                            <constraint firstItem="FsA-8g-IdJ" firstAttribute="centerX" secondItem="MnE-JE-gFd" secondAttribute="centerX" id="9Oe-cj-PxH"/>
+                            <constraint firstItem="Nbh-i1-Ffu" firstAttribute="width" secondItem="Hbz-fk-Ig9" secondAttribute="width" multiplier="0.400966" id="Fzb-2R-m2c"/>
+                            <constraint firstItem="1k1-UU-WM9" firstAttribute="centerX" secondItem="MnE-JE-gFd" secondAttribute="centerX" id="Mbe-Kx-ise"/>
+                            <constraint firstItem="HXR-Ma-p5x" firstAttribute="top" secondItem="1k1-UU-WM9" secondAttribute="bottom" constant="32" id="RO1-0q-4zs"/>
+                            <constraint firstItem="1k1-UU-WM9" firstAttribute="top" secondItem="t79-uY-Nkl" secondAttribute="bottom" constant="16" id="Rlj-87-mh2"/>
+                            <constraint firstItem="FsA-8g-IdJ" firstAttribute="top" secondItem="Hbz-fk-Ig9" secondAttribute="top" constant="16" id="bFf-bB-hOU"/>
+                            <constraint firstItem="1k1-UU-WM9" firstAttribute="width" secondItem="Nbh-i1-Ffu" secondAttribute="width" id="blR-Vj-c0L"/>
+                            <constraint firstItem="t79-uY-Nkl" firstAttribute="centerX" secondItem="MnE-JE-gFd" secondAttribute="centerX" id="fr5-lp-rgg"/>
+                            <constraint firstItem="t79-uY-Nkl" firstAttribute="top" secondItem="2Es-ZO-7b2" secondAttribute="bottom" constant="16" id="mno-qu-eUo"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="Hbz-fk-Ig9"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Account" image="person.circle" catalog="system" id="26w-Kb-gyo"/>
                     <navigationItem key="navigationItem" id="pBb-p4-gls"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="depositTextField" destination="2Es-ZO-7b2" id="e7M-JX-nhq"/>
+                        <outlet property="outerView" destination="MnE-JE-gFd" id="CTy-JP-D44"/>
+                        <outlet property="transferTextField" destination="ghN-ub-mFu" id="Cvb-ot-7EP"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ser-zT-UUU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
