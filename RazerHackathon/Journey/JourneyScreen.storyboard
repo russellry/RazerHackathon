@@ -148,7 +148,7 @@
                                 </state>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.0" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="banner" translatesAutoresizingMaskIntoConstraints="NO" id="zqX-5h-xcM">
-                                <rect key="frame" x="34.5" y="60" width="345" height="117"/>
+                                <rect key="frame" x="34.5" y="44" width="345" height="117"/>
                             </imageView>
                             <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JVR-5n-C9F">
                                 <rect key="frame" x="0.0" y="44" width="414" height="969"/>
@@ -184,7 +184,7 @@
                             <constraint firstItem="6Hr-Wz-eg6" firstAttribute="bottom" secondItem="w5H-w4-A7p" secondAttribute="bottom" id="jyI-hz-iai"/>
                             <constraint firstItem="6Hr-Wz-eg6" firstAttribute="trailing" secondItem="JVR-5n-C9F" secondAttribute="trailing" id="keh-a5-RBn"/>
                             <constraint firstItem="w5H-w4-A7p" firstAttribute="centerX" secondItem="KIr-e7-uTh" secondAttribute="centerX" id="mVc-NA-WL9"/>
-                            <constraint firstItem="zqX-5h-xcM" firstAttribute="top" secondItem="6Hr-Wz-eg6" secondAttribute="top" constant="16" id="qRd-ri-wdr"/>
+                            <constraint firstItem="zqX-5h-xcM" firstAttribute="top" secondItem="6Hr-Wz-eg6" secondAttribute="top" id="qRd-ri-wdr"/>
                             <constraint firstItem="w5H-w4-A7p" firstAttribute="top" secondItem="KIr-e7-uTh" secondAttribute="bottom" constant="32" id="r4c-d6-zz9"/>
                             <constraint firstItem="KIr-e7-uTh" firstAttribute="top" secondItem="3op-n0-zMc" secondAttribute="bottom" constant="-80" id="vtV-91-OH8"/>
                         </constraints>

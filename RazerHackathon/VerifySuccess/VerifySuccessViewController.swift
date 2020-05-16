@@ -14,7 +14,7 @@ class VerifySuccessViewController: UIViewController {
     
     var base64image: String?
     let verifyNRICURL: String = "https://niw1itg937.execute-api.ap-southeast-1.amazonaws.com/Prod/verify"
-    var baseURL: String = "https://razerhackathon.sandbox.mambu.com/api/"
+    let baseURL: String = "https://razerhackathon.sandbox.mambu.com/api/"
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var typeLabel: UILabel!
     @IBOutlet weak var bdayLabel: UILabel!
@@ -34,11 +34,10 @@ class VerifySuccessViewController: UIViewController {
         continueBtn.layer.cornerRadius = 4
         continueBtn.isEnabled = false
         retakeBtn.layer.cornerRadius = 4
-        loadBase64()
+        startProcess()
     }
     
-    // I know its callback hell.
-    func loadBase64() {
+    func startProcess() {
         let headers = [
             "x-api-key": "uwFcGSR4Fb5Zzxwvhkch",
             "Content-Type": "application/json"
@@ -72,12 +71,12 @@ class VerifySuccessViewController: UIViewController {
                     })
                 })
             } catch {
-                print(error)
+                let alert = UIAlertController(title: "Your picture wasn't super clear", message: "Let's retake the photo, yeah?", preferredStyle: .alert)
+
+                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                self.present(alert, animated: true)
             }
         })
-        //        let nricModel = NRICModel(prediction: Prediction(confidence: 0.99, type: "sg_id_front"), qualityCheck: QualityCheck(finalDecision: true), vision: Vision(extract: Extract(countryOfBirth: "SINGAPORE", dob: "24-04-1995", idNum: "S9516203G", name: "RUSSELL ONG REN-YIH", race: "CHINESE"), type: "sg_id_front"))
-        
-        
     }
     
     func createCurrentAccount(){
@@ -106,7 +105,6 @@ class VerifySuccessViewController: UIViewController {
             let headers = ["Authorization": "Basic \(base64Credentials)"]
             
             AF.request(currentAccountURL, method: .post, parameters: params, encoding: JSONEncoding.default,  headers: HTTPHeaders(headers)).responseJSON { rr in
-                debugPrint(rr)
                 return
             }
         } catch {
@@ -141,10 +139,6 @@ class VerifySuccessViewController: UIViewController {
         } catch {
             print(error)
         }
-        
-        
-        
-        
     }
     
     func getBranchID(onCompletion: @escaping ((_ response: String) -> Void)) {

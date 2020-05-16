@@ -33,21 +33,13 @@ class JourneyViewController: UIViewController {
     let defaults = UserDefaults.standard
     
     let popupTitle = "HEY THERE!"
-    let popupMessage = "Here's a reward on us." + "\n" + "2 FREE GAME CHANCES"
+    let popupMessage = "You've unlocked CAREER STARTER! " + "\n" + "Here's a reward on us."
     let popupImage = UIImage(named: "sneki-graduated")
     
     override func viewDidLoad() {
         super.viewDidLoad()
         NotificationCenter.default.addObserver(self, selector: #selector(fillProgress), name: .progressFilled, object: nil)
         setupUI()
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(true)
-        if progressFilled {
-            animateBanner()
-            progressFilled = false
-        }
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -71,13 +63,15 @@ class JourneyViewController: UIViewController {
     @objc func fillProgress() {
         self.createEndowmentAccount()
         progressBarBtn.setBackgroundImage(UIImage(named: "progress-full"), for: .normal)
-        isBannerReady = true
+        isCongradulationReady = true
     }
     
     func congradulationPopup() {
         let popup = PopupDialog(title: popupTitle, message: popupMessage, image: popupImage)
         let claimButton = DefaultButton(title: "CLAIM") {
-            //TODO:
+            self.backgroundView.image = UIImage(named: "bg-2")
+            self.snekiSnek.setImage(UIImage(named: "mascot-work"), for: .normal)
+            self.transition()
         }
         
         popup.addButtons([claimButton])
@@ -136,16 +130,16 @@ class JourneyViewController: UIViewController {
     
     func animateBanner(){
         view.layoutIfNeeded()
-        UIView.animate(withDuration: 1, delay: 1, options: .curveEaseIn, animations: {
+        UIView.animate(withDuration: 3, delay: 1, options: .curveEaseIn, animations: {
             self.upgradedBanner.alpha = 1
-            self.upgradedBannerTopConstraint.constant -= 32
+            self.upgradedBannerTopConstraint.constant += 16
             self.view.layoutIfNeeded()
             
         })
         
-        UIView.animate(withDuration: 1, delay: 0, options: .curveEaseOut, animations: {
+        UIView.animate(withDuration: 3, delay: 0, options: .curveEaseOut, animations: {
             self.upgradedBanner.alpha = 0
-            self.upgradedBannerTopConstraint.constant -= 32
+            self.upgradedBannerTopConstraint.constant += 16
             self.view.layoutIfNeeded()
             
         })
@@ -159,11 +153,11 @@ class JourneyViewController: UIViewController {
                 self.questYConstraint.constant = 0
                 self.view.layoutIfNeeded()
             })
-        } else if progressFilled && isBannerReady {
-            animateBanner()
-            isCongradulationReady = true
-        } else if progressFilled && isBannerReady && isCongradulationReady {
+        } else if progressFilled && !isBannerReady && isCongradulationReady{
             congradulationPopup()
+            isBannerReady = true
+        } else if progressFilled && isBannerReady && isCongradulationReady{
+            animateBanner()
             progressBarBtn.isUserInteractionEnabled = false
         }
     }

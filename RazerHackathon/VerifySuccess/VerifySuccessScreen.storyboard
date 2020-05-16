@@ -42,8 +42,8 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jOL-0q-YIK">
                                         <rect key="frame" x="0.0" y="186" width="373" height="123.5"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TYPE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DWg-AO-YPV">
-                                                <rect key="frame" x="64" y="16" width="42" height="21"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TYPE" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DWg-AO-YPV">
+                                                <rect key="frame" x="54" y="16" width="41.5" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -60,8 +60,8 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NRIC" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X6B-cO-JXk">
-                                                <rect key="frame" x="64" y="45" width="39" height="21"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NRIC" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X6B-cO-JXk">
+                                                <rect key="frame" x="54" y="44.5" width="39" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -78,8 +78,8 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="RACE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ev2-fu-X7g">
-                                                <rect key="frame" x="64" y="74" width="43" height="21"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="RACE" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ev2-fu-X7g">
+                                                <rect key="frame" x="54" y="73" width="43" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -96,9 +96,8 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="BIRTHDAY" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eBo-F9-GV3">
-                                                <rect key="frame" x="205" y="16" width="81" height="21"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BIRTHDAY" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eBo-F9-GV3">
+                                                <rect key="frame" x="191.5" y="16" width="80.5" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -115,9 +114,8 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="BIRTHCOUNTRY" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GCn-kV-CED">
-                                                <rect key="frame" x="205" y="44" width="129" height="21"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BIRTHCOUNTRY" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GCn-kV-CED">
+                                                <rect key="frame" x="191.5" y="44" width="129" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -140,8 +138,12 @@
                                             <constraint firstItem="X6B-cO-JXk" firstAttribute="top" secondItem="DWg-AO-YPV" secondAttribute="bottom" constant="8" id="1e5-Fx-FLJ"/>
                                             <constraint firstItem="Ev2-fu-X7g" firstAttribute="leading" secondItem="X6B-cO-JXk" secondAttribute="leading" id="9lI-kB-S6m"/>
                                             <constraint firstItem="Ev2-fu-X7g" firstAttribute="top" secondItem="X6B-cO-JXk" secondAttribute="bottom" constant="8" id="CMC-kW-FCu"/>
-                                            <constraint firstItem="DWg-AO-YPV" firstAttribute="leading" secondItem="jOL-0q-YIK" secondAttribute="leading" constant="64" id="EuP-qQ-9Te"/>
+                                            <constraint firstItem="DWg-AO-YPV" firstAttribute="leading" secondItem="jOL-0q-YIK" secondAttribute="leading" constant="54" id="EuP-qQ-9Te"/>
                                             <constraint firstItem="DWg-AO-YPV" firstAttribute="top" secondItem="jOL-0q-YIK" secondAttribute="top" constant="16" id="Tyj-VD-IIK"/>
+                                            <constraint firstItem="GCn-kV-CED" firstAttribute="top" secondItem="eBo-F9-GV3" secondAttribute="bottom" constant="7.5" id="Yca-AI-Agf"/>
+                                            <constraint firstItem="eBo-F9-GV3" firstAttribute="centerX" secondItem="jOL-0q-YIK" secondAttribute="centerX" constant="45" id="aAM-7f-nUd"/>
+                                            <constraint firstItem="GCn-kV-CED" firstAttribute="leading" secondItem="eBo-F9-GV3" secondAttribute="leading" id="qZV-Rm-lvB"/>
+                                            <constraint firstItem="eBo-F9-GV3" firstAttribute="top" secondItem="DWg-AO-YPV" secondAttribute="top" id="yL0-pt-N16"/>
                                             <constraint firstItem="X6B-cO-JXk" firstAttribute="leading" secondItem="DWg-AO-YPV" secondAttribute="leading" id="zg4-H0-6y7"/>
                                         </constraints>
                                     </view>

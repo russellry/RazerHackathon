@@ -83,7 +83,6 @@ class HomeViewController: UIViewController {
         let headers = ["Authorization": "Basic \(base64Credentials)"]
         
         AF.request(obtainClientAccountURL, method: .get, headers: HTTPHeaders(headers)).responseJSON { response in
-            debugPrint(response)
             do {
                 let result = try JSONDecoder().decode([ClientAccountModel].self, from: response.data!)
                 onCompletion(result)
@@ -171,7 +170,6 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         if type == "DEPOSIT" {
             cell.amountLabel.text = "+ SGD \(transaction.amount).00"
             cell.amountLabel.textColor = .systemGreen
-            print("my type is \(type)")
         } else {
             let amount = transaction.amount.description.replacingOccurrences(of: "-", with: "")
             cell.amountLabel.text = "- SGD \(amount).00"
