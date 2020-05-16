@@ -19,6 +19,13 @@
 		FB49FBF5246F183B006082E5 /* DiscoverDailyScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB49FBF4246F183B006082E5 /* DiscoverDailyScreen.storyboard */; };
 		FB49FBF8246F38B9006082E5 /* GamesScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB49FBF7246F38B9006082E5 /* GamesScreen.storyboard */; };
 		FB49FBFA246F38C1006082E5 /* GamesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB49FBF9246F38C1006082E5 /* GamesViewController.swift */; };
+		FB49FBFC246FB4F2006082E5 /* DepositModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB49FBFB246FB4F2006082E5 /* DepositModel.swift */; };
+		FB49FBFE246FB71C006082E5 /* ClientAccountModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB49FBFD246FB71C006082E5 /* ClientAccountModel.swift */; };
+		FB49FC00246FBBAB006082E5 /* TransactionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB49FBFF246FBBAB006082E5 /* TransactionModel.swift */; };
+		FB49FC02246FC388006082E5 /* TransactionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB49FC01246FC388006082E5 /* TransactionTableViewCell.swift */; };
+		FB49FC05246FCFAF006082E5 /* AccountCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB49FC03246FCFAF006082E5 /* AccountCollectionViewCell.swift */; };
+		FB49FC06246FCFAF006082E5 /* AccountCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB49FC04246FCFAF006082E5 /* AccountCollectionViewCell.xib */; };
+		FB49FC08246FDE11006082E5 /* TransferModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB49FC07246FDE11006082E5 /* TransferModel.swift */; };
 		FB60866F246E55AF00A68DC6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB60866E246E55AF00A68DC6 /* AppDelegate.swift */; };
 		FB608671246E55AF00A68DC6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB608670246E55AF00A68DC6 /* SceneDelegate.swift */; };
 		FB608673246E55AF00A68DC6 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB608672246E55AF00A68DC6 /* FirstViewController.swift */; };
@@ -55,6 +62,13 @@
 		FB49FBF4246F183B006082E5 /* DiscoverDailyScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DiscoverDailyScreen.storyboard; sourceTree = "<group>"; };
 		FB49FBF7246F38B9006082E5 /* GamesScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GamesScreen.storyboard; sourceTree = "<group>"; };
 		FB49FBF9246F38C1006082E5 /* GamesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamesViewController.swift; sourceTree = "<group>"; };
+		FB49FBFB246FB4F2006082E5 /* DepositModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepositModel.swift; sourceTree = "<group>"; };
+		FB49FBFD246FB71C006082E5 /* ClientAccountModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientAccountModel.swift; sourceTree = "<group>"; };
+		FB49FBFF246FBBAB006082E5 /* TransactionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionModel.swift; sourceTree = "<group>"; };
+		FB49FC01246FC388006082E5 /* TransactionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionTableViewCell.swift; sourceTree = "<group>"; };
+		FB49FC03246FCFAF006082E5 /* AccountCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountCollectionViewCell.swift; sourceTree = "<group>"; };
+		FB49FC04246FCFAF006082E5 /* AccountCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AccountCollectionViewCell.xib; sourceTree = "<group>"; };
+		FB49FC07246FDE11006082E5 /* TransferModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferModel.swift; sourceTree = "<group>"; };
 		FB60866B246E55AF00A68DC6 /* RazerHackathon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RazerHackathon.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB60866E246E55AF00A68DC6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FB608670246E55AF00A68DC6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -227,6 +241,9 @@
 			isa = PBXGroup;
 			children = (
 				FB608694246E630700A68DC6 /* CameraController.swift */,
+				FB49FC01246FC388006082E5 /* TransactionTableViewCell.swift */,
+				FB49FC03246FCFAF006082E5 /* AccountCollectionViewCell.swift */,
+				FB49FC04246FCFAF006082E5 /* AccountCollectionViewCell.xib */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -247,6 +264,10 @@
 				FB6086A0246E9C4500A68DC6 /* BranchModel.swift */,
 				FB6086A2246EB72800A68DC6 /* ClientModel.swift */,
 				FB6086A4246EDE9C00A68DC6 /* CurrentAccountModel.swift */,
+				FB49FBFB246FB4F2006082E5 /* DepositModel.swift */,
+				FB49FBFD246FB71C006082E5 /* ClientAccountModel.swift */,
+				FB49FBFF246FBBAB006082E5 /* TransactionModel.swift */,
+				FB49FC07246FDE11006082E5 /* TransferModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -317,6 +338,7 @@
 				FB49FBF8246F38B9006082E5 /* GamesScreen.storyboard in Resources */,
 				FB49FBE9246F0036006082E5 /* JourneyScreen.storyboard in Resources */,
 				FB49FBE2246EF717006082E5 /* HomeScreen.storyboard in Resources */,
+				FB49FC06246FCFAF006082E5 /* AccountCollectionViewCell.xib in Resources */,
 				FB49FBF5246F183B006082E5 /* DiscoverDailyScreen.storyboard in Resources */,
 				FB60867A246E55B200A68DC6 /* Assets.xcassets in Resources */,
 				FB608699246E661E00A68DC6 /* TakePhotoScreen.storyboard in Resources */,
@@ -386,13 +408,19 @@
 				FB6086A1246E9C4500A68DC6 /* BranchModel.swift in Sources */,
 				FB6086A5246EDE9C00A68DC6 /* CurrentAccountModel.swift in Sources */,
 				FB49FBFA246F38C1006082E5 /* GamesViewController.swift in Sources */,
+				FB49FC00246FBBAB006082E5 /* TransactionModel.swift in Sources */,
 				FB608686246E55EB00A68DC6 /* OnboardingViewController.swift in Sources */,
+				FB49FC05246FCFAF006082E5 /* AccountCollectionViewCell.swift in Sources */,
 				FB60866F246E55AF00A68DC6 /* AppDelegate.swift in Sources */,
+				FB49FC02246FC388006082E5 /* TransactionTableViewCell.swift in Sources */,
+				FB49FBFC246FB4F2006082E5 /* DepositModel.swift in Sources */,
 				FB60869C246E6F3000A68DC6 /* UIImage.swift in Sources */,
 				FB49FBF0246F1526006082E5 /* UIView.swift in Sources */,
 				FB60869E246E78BD00A68DC6 /* NRICModel.swift in Sources */,
 				FB608695246E630700A68DC6 /* CameraController.swift in Sources */,
+				FB49FBFE246FB71C006082E5 /* ClientAccountModel.swift in Sources */,
 				FB608671246E55AF00A68DC6 /* SceneDelegate.swift in Sources */,
+				FB49FC08246FDE11006082E5 /* TransferModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
