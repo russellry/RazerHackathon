@@ -101,6 +101,10 @@ class HomeViewController: UIViewController {
                 let data = try? JSONEncoder().encode(deposit)
                 let params = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as? [String: Any]
                 AF.request(depositURL, method: .post, parameters: params, encoding: JSONEncoding.default,  headers: headers).responseJSON(completionHandler: { _ in
+                    self.obtainClientAccounts(onCompletion: { clientAcc in
+                        self.accounts = clientAcc
+                        self.accountsCollection.reloadData()
+                    })
                     self.getAllTransactions(currentAccountID: currentAccountID)
                 })
             }

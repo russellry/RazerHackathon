@@ -49,6 +49,7 @@ class JourneyViewController: UIViewController {
     func transition(){
         discoverDailyOuterView.backgroundColor = UIColor(red:0.46, green:0.08, blue:0.14, alpha:1.0)
         discoverDailyLabel.textColor = .white
+        discoverDailyLabel.text = "New Milestone. New Achievements."
         discoverContentLabel.text = "We’re so proud of you. Let us get you ready for new goals! "
     }
     
